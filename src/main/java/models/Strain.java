@@ -1,0 +1,97 @@
+package models;
+
+import java.time.LocalDateTime;
+
+public class Strain {
+    private LocalDateTime dateTime;
+    private String sensorName;
+    private int waarde;
+    private String unit;
+    private boolean brugdeel; //because there are only two options (vast:true and draai: false) we can use a boolean
+    private float kopAfstand;
+    private String element; //all attributes given in the .csv files
+
+    //Empty constructor
+    public Strain(){}
+
+    //Overloaded constructor
+    public Strain(LocalDateTime dateTime, String sensorName, int waarde, String unit, boolean brugdeel, float kopAfstand, String element) {
+        this.dateTime = dateTime;
+        this.sensorName = sensorName;
+        this.waarde = waarde;
+        this.unit = unit;
+        this.brugdeel = brugdeel;
+        this.kopAfstand = kopAfstand;
+        this.element = element;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Strain{" +
+                "dateTime=" + dateTime +
+                ", sensorName='" + sensorName + '\'' +
+                ", waarde=" + waarde +
+                ", unit='" + unit + '\'' +
+                ", brugdeel=" + brugdeel +
+                ", kopAfstand=" + kopAfstand +
+                ", element='" + element + '\'' +
+                '}';
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public String getSensorName() {
+        return sensorName;
+    }
+
+    public void setSensorName(String sensorName) {
+        this.sensorName = sensorName;
+    }
+
+    public int getWaarde() {
+        return waarde;
+    }
+
+    public void setWaarde(int waarde) {
+        this.waarde = waarde;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public boolean isBrugdeel() {
+        return brugdeel;
+    }
+
+    public void setBrugdeel(boolean brugdeel) {
+        this.brugdeel = brugdeel;
+    }
+
+    public float getKopAfstand() {
+        return kopAfstand;
+    }
+
+    public void setKopAfstand(float kopAfstand) {
+        this.kopAfstand = kopAfstand;
+    }
+
+    public String getElement() {
+        return element;
+    }
+
+    public void setElement(String element) {
+        this.element = element;
+    }
+}
