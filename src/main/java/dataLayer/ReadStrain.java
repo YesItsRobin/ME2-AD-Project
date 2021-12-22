@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadStrain extends BaseReader{
-
+    
     public ArrayList<Strain> getStrains(int group, int number) throws IOException {
         ArrayList<String> data = readCSV(group,number);
         ArrayList<Strain> strains = new ArrayList<Strain>();

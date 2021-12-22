@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
             prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.HomeScreenController">
+            fx:controller="controllers.OldHomeScreenController">
     <Text layoutX="315.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ritsumasyl Bridge Statistics"
           textOrigin="CENTER" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="315.15625"
           AnchorPane.topAnchor="42.0">
