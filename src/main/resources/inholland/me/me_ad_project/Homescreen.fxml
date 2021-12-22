@@ -12,54 +12,69 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomescreenController">
-    <children>
-        <Text layoutX="315.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ritsumasyl Bridge Statistics" textOrigin="CENTER" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="315.15625" AnchorPane.topAnchor="42.0">
-            <font>
-                <Font name="Candara" size="32.0" />
-            </font>
-        </Text>
-        <GridPane layoutX="40.0" layoutY="74.0" prefHeight="648.0" prefWidth="913.0" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="74.0">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <ImageView fx:id="bar_graph_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                    <image>
-                        <Image url="@../../../../bar_graph.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="line_graph_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                    <image>
-                        <Image url="@../../../../line_graph.PNG" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="bridge_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                    <image>
-                        <Image url="@../../../../ritsumasyl_bridge.jpg" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="info_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                    <image>
-                        <Image url="@../../../../info_symbol.png" />
-                    </image>
-                </ImageView>
-                <Button fx:id="statistics_button" mnemonicParsing="false" onAction="#statisticsPressed" text="Statistics" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-                <Button fx:id="timelapse_button" mnemonicParsing="false" onAction="#timelapsePressed" text="Timelapse" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-                <Button fx:id="bridge_sensors_button" mnemonicParsing="false" onAction="#bridgePressed" text="Bridge sensors" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                <Button fx:id="info_button" mnemonicParsing="false" onAction="#infoPressed" text="Information" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            </children>
-        </GridPane>
-        <MenuButton layoutX="-320.0" layoutY="74.0" mnemonicParsing="false" text="MenuButton">
-            <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-            </items>
-        </MenuButton>
-    </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.HomeScreenController">
+    <Text layoutX="315.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ritsumasyl Bridge Statistics"
+          textOrigin="CENTER" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="315.15625"
+          AnchorPane.topAnchor="42.0">
+        <font>
+            <Font name="Candara" size="32.0"/>
+        </font>
+    </Text>
+    <GridPane layoutX="40.0" layoutY="74.0" prefHeight="648.0" prefWidth="913.0" AnchorPane.bottomAnchor="78.0"
+              AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="74.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+        <children>
+            <ImageView fx:id="bar_graph_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
+                       preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                <image>
+                    <Image url="../../../images/bar_graph.png"/>
+                </image>
+            </ImageView>
+            <ImageView fx:id="line_graph_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
+                       preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                       GridPane.valignment="CENTER">
+                <image>
+                    <Image url="line_graph.PNG"/>
+                </image>
+            </ImageView>
+            <ImageView fx:id="bridge_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"
+                       GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                <image>
+                    <Image url="../../../images/ritsumasyl_bridge.jpg"/>
+                </image>
+            </ImageView>
+            <ImageView fx:id="info_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"
+                       GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                       GridPane.valignment="CENTER">
+                <image>
+                    <Image url="../../../images/info_symbol.png"/>
+                </image>
+            </ImageView>
+            <Button fx:id="statistics_button" mnemonicParsing="false" onAction="#statisticsPressed" text="Statistics"
+                    GridPane.halignment="CENTER" GridPane.valignment="BOTTOM"/>
+            <Button fx:id="timelapse_button" mnemonicParsing="false" onAction="#timelapsePressed" text="Timelapse"
+                    GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM"/>
+            <Button fx:id="bridge_sensors_button" mnemonicParsing="false" onAction="#bridgePressed"
+                    text="Bridge sensors" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                    GridPane.valignment="BOTTOM"/>
+            <Button fx:id="info_button" mnemonicParsing="false" onAction="#infoPressed" text="Information"
+                    GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                    GridPane.valignment="BOTTOM"/>
+        </children>
+    </GridPane>
+    <MenuButton layoutX="-320.0" layoutY="74.0" mnemonicParsing="false" text="MenuButton">
+        <items>
+            <MenuItem mnemonicParsing="false" text="Action 1"/>
+            <MenuItem mnemonicParsing="false" text="Action 2"/>
+        </items>
+    </MenuButton>
 </AnchorPane>

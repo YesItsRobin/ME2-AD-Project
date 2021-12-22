@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class MainScreen {
     public static Stage getMainScreen() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("main-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("Homescreen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         Stage stage = new Stage();
         stage.setScene(scene);
