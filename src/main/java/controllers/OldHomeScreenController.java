@@ -24,6 +24,7 @@ public class OldHomeScreenController {
     public Button timelapse_button;
     public Button bridge_sensors_button;
     public Button info_button;
+    public Button HomeScreenController;
 
 
     @FXML
