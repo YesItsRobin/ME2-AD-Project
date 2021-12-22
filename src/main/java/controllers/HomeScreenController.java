@@ -12,10 +12,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class HomeScreenController {
-    private Stage stage;
-    private Scene scene;
     private Parent root;
 
     @FXML
@@ -56,9 +55,9 @@ public class HomeScreenController {
     when clicked it will send to the page where you can pick a strain and show the bar graph*/
     @FXML
     void statisticsPressed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("BarChart.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BarChart.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
