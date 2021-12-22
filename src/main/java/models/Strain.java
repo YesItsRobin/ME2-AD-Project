@@ -7,7 +7,7 @@ public class Strain {
     private String sensorName;
     private int waarde;
     private String unit;
-    private boolean brugdeel; //because there are only two options (vast:true and draai: false) we can use a boolean
+    private Brugdeel brugdeel; //because there are only two options (vast:true and draai: false) we can use a boolean
     private float kopAfstand;
     private String element; //all attributes given in the .csv files
 
@@ -15,7 +15,7 @@ public class Strain {
     public Strain(){}
 
     //Overloaded constructor
-    public Strain(LocalDateTime dateTime, String sensorName, int waarde, String unit, boolean brugdeel, float kopAfstand, String element) {
+    public Strain(LocalDateTime dateTime, String sensorName, int waarde, String unit, Brugdeel brugdeel, float kopAfstand, String element) {
         this.dateTime = dateTime;
         this.sensorName = sensorName;
         this.waarde = waarde;
@@ -71,11 +71,11 @@ public class Strain {
         this.unit = unit;
     }
 
-    public boolean isBrugdeel() {
+    public Brugdeel getBrugdeel() {
         return brugdeel;
     }
 
-    public void setBrugdeel(boolean brugdeel) {
+    public void setBrugdeel(Brugdeel brugdeel) {
         this.brugdeel = brugdeel;
     }
 
