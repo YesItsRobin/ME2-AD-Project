@@ -11,7 +11,7 @@ public class Start extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        stage = TestScreen.getTestScreen();
+        stage = HomeScreen.getHomeScreen();
         stage.setTitle("Hello!");
         stage.show();
     }

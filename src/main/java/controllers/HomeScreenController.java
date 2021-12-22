@@ -15,31 +15,16 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class HomeScreenController {
-    private Parent root;
 
-    @FXML
-    private ImageView bar_graph_image;
+    public ImageView line_graph_image;
+    public ImageView bar_graph_image;
+    public ImageView bridge_image;
+    public ImageView info_image;
+    public Button statistics_button;
+    public Button timelapse_button;
+    public Button bridge_sensors_button;
+    public Button info_button;
 
-    @FXML
-    private ImageView line_graph_image;
-
-    @FXML
-    private ImageView bridge_image;
-
-    @FXML
-    private ImageView info_image;
-
-    @FXML
-    private Button statistics_button;
-
-    @FXML
-    private Button timelapse_button;
-
-    @FXML
-    private Button bridge_sensors_button;
-
-    @FXML
-    private Button info_button;
 
     @FXML
     void bridgePressed(ActionEvent event) {
