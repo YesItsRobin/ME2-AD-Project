@@ -12,6 +12,7 @@ public class ReadStrain extends BaseReader{
     public ArrayList<Strain> getStrains(int group, int number) throws IOException {
         ArrayList<String> data = readCSV(group,number);
         ArrayList<Strain> strains = new ArrayList<Strain>();
+        data.remove(0);
         for (String row: data) {
             strains.add(buildStrain(row));
         }
@@ -30,7 +31,13 @@ public class ReadStrain extends BaseReader{
             //initializes the attributes and do the needed parses and replacements
             LocalDateTime dateTime = LocalDateTime.parse(dataSplit.get(0).replace("Z", ""));
             String sensorName = dataSplit.get(1);
-            int waarde = Integer.parseInt(dataSplit.get(2).replace(",", ""));
+            int waarde;
+    try {
+        waarde = Integer.parseInt(dataSplit.get(2).replace(",", ""));
+    }
+    catch (NumberFormatException e){
+        waarde = 0;
+    }
             String unit = dataSplit.get(3);
             float kopAfstand = Float.parseFloat(dataSplit.get(5).replace(",", "."));
             String element = dataSplit.get(6); //all attributes given in the .csv files
