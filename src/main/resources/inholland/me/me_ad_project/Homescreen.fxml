@@ -42,22 +42,16 @@
             <ImageView fx:id="line_graph_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                        preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER"
                        GridPane.valignment="CENTER">
-                <image>
-                    <Image url="line_graph.PNG"/>
-                </image>
+                <Image url="../../../images/line_graph.PNG"/>
             </ImageView>
             <ImageView fx:id="bridge_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"
                        GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                <image>
-                    <Image url="../../../images/ritsumasyl_bridge.jpg"/>
-                </image>
+                <Image url="../../../images/ritsumasyl_bridge.jpg"/>
             </ImageView>
             <ImageView fx:id="info_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"
                        GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1"
                        GridPane.valignment="CENTER">
-                <image>
-                    <Image url="../../../images/info_symbol.png"/>
-                </image>
+                <Image url="../../../images/info_symbol.png"/>
             </ImageView>
             <Button fx:id="statistics_button" mnemonicParsing="false" onAction="#statisticsPressed" text="Statistics"
                     GridPane.halignment="CENTER" GridPane.valignment="BOTTOM"/>
