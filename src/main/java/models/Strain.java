@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class Strain {
     private LocalDateTime dateTime;
     private String sensorName;
-    private int waarde;
+    private float waarde;
     private String unit;
     private boolean brugdeel; //because there are only two options (vast:true and draai: false) we can use a boolean
     private float kopAfstand;
@@ -15,7 +15,7 @@ public class Strain {
     public Strain(){}
 
     //Overloaded constructor
-    public Strain(LocalDateTime dateTime, String sensorName, int waarde, String unit, boolean brugdeel, float kopAfstand, String element) {
+    public Strain(LocalDateTime dateTime, String sensorName, float waarde, String unit, boolean brugdeel, float kopAfstand, String element) {
         this.dateTime = dateTime;
         this.sensorName = sensorName;
         this.waarde = waarde;
@@ -55,11 +55,11 @@ public class Strain {
         this.sensorName = sensorName;
     }
 
-    public int getWaarde() {
+    public float getWaarde() {
         return waarde;
     }
 
-    public void setWaarde(int waarde) {
+    public void setWaarde(float waarde) {
         this.waarde = waarde;
     }
 

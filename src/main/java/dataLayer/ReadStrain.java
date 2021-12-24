@@ -2,6 +2,7 @@ package dataLayer;
 
 import models.Strain;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -31,11 +32,12 @@ public class ReadStrain extends BaseReader{
             //initializes the attributes and do the needed parses and replacements
             LocalDateTime dateTime = LocalDateTime.parse(dataSplit.get(0).replace("Z", ""));
             String sensorName = dataSplit.get(1);
-            int waarde;
+            float waarde;
     try {
-        waarde = Integer.parseInt(dataSplit.get(2).replace(",", ""));
+        waarde = Float.parseFloat(dataSplit.get(2).replace(",", "."));
     }
     catch (NumberFormatException e){
+        System.out.println(dataSplit.get(2));
         waarde = 0;
     }
             String unit = dataSplit.get(3);
@@ -45,5 +47,23 @@ public class ReadStrain extends BaseReader{
             return new Strain(dateTime,sensorName, waarde, unit, brugdeelBoolean, kopAfstand, element);
     }
 
+    public List<Strain> strainsFromDay(LocalDateTime localDateTime){
+        List<Strain> strainsDate = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < new File("SensordataBridgeProjectApplicationDevelopment\\strain-group"+ (i+1)).list().length; j++) {
+                try {
+                    for (Strain strain: getStrains(i+1, j+1)){
+                        if (strain.getDateTime().isAfter(localDateTime) && strain.getDateTime().isBefore(localDateTime.plusDays(1))){
+                            strainsDate.add(strain);
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return strainsDate;
+    }
 
 }
+
