@@ -7,8 +7,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MainScreen {
-    public static Stage getMainScreen() throws IOException {
+public class TestScreen {
+    public static Stage getTestScreen() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         Stage stage = new Stage();
