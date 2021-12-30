@@ -2,6 +2,7 @@ package dataLayer;
 
 import models.Strain;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -52,10 +53,11 @@ public class ReadStrain extends BaseReader {
                 System.out.println("SensordataBridgeProjectApplicationDevelopment\\strain-group" + (i + 1) + (j + 1));
                 boolean dataExtracted = false;
                 boolean dataFound = false;
-                int index = findApproximationIndex(i + 1, j + 1, begin);
+                int index = findIndex(i + 1, j + 1, begin);
+                BufferedReader csvReader = getBufferedReader(i + 1, j + 1, index);
                 try {
                     while (!dataExtracted) {
-                        Strain strain = buildStrain(readCSVRow(i + 1, j + 1, index));
+                        Strain strain = buildStrain(csvReader.readLine());
                         boolean statement = strain.getDateTime().isAfter(begin) && strain.getDateTime().isBefore(end);
 
                         if (statement) {
@@ -76,7 +78,7 @@ public class ReadStrain extends BaseReader {
         return strainsDate;
     }
 
-    public static int findApproximationIndex(int group, int number, LocalDateTime begin) throws IOException {
+    public static int findIndex(int group, int number, LocalDateTime begin) throws IOException {
         int index = 0;
         boolean done = false;
         while (!done) {
@@ -104,6 +106,13 @@ public class ReadStrain extends BaseReader {
             Strain strain = buildStrain(readCSVRow(group, number, index));
             if (strain.getDateTime().compareTo(begin)<0){index+=100;}
             else if (strain.getDateTime().compareTo(begin)>=0){index-=100; done=true;}
+        }
+
+        done = false;
+        while (!done) {
+            Strain strain = buildStrain(readCSVRow(group, number, index));
+            if (strain.getDateTime().compareTo(begin)<0){index+=1;}
+            else if (strain.getDateTime().compareTo(begin)>=0){done=true;}
         }
 
         return index;
