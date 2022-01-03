@@ -1,4 +1,4 @@
-package views;
+package models;
 
 import inholland.me.me_ad_project.Start;
 import javafx.fxml.FXMLLoader;

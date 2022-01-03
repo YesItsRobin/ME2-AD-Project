@@ -1,6 +1,7 @@
 package views;
 
 import javafx.stage.Stage;
+import models.View;
 
 import java.io.IOException;
 

@@ -34,21 +34,21 @@
         </rowConstraints>
         <ImageView fx:id="bar_graph_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                    preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-            <Image url="../../../images/bar_graph.png"/>
+            <Image url="../images/bar_graph.png"/>
         </ImageView>
         <ImageView fx:id="line_graph_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                    preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER"
                    GridPane.valignment="CENTER">
-            <Image url="../../../images/line_graph.PNG"/>
+            <Image url="../images/line_graph.PNG"/>
         </ImageView>
         <ImageView fx:id="bridge_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"
                    GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-            <Image url="../../../images/ritsumasyl_bridge.jpg"/>
+            <Image url="../images/ritsumasyl_bridge.jpg"/>
         </ImageView>
         <ImageView fx:id="info_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"
                    GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1"
                    GridPane.valignment="CENTER">
-            <Image url="../../../images/info_symbol.png"/>
+            <Image url="../images/info_symbol.png"/>
         </ImageView>
         <Button fx:id="statistics_button" mnemonicParsing="false" onAction="#statisticsPressed" text="Statistics"
                 GridPane.halignment="CENTER" GridPane.valignment="BOTTOM"/>

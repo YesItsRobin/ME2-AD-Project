@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StatisticsScreenController">
+   <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Home" text="Home" />
+   <Button layoutX="546.0" layoutY="360.0" mnemonicParsing="false" onAction="#closeStage" text="Quit" />
+   <Text layoutX="159.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TODO: MAKE STATS SCREEN HERE" wrappingWidth="261.33673095703125" />
+</AnchorPane>
