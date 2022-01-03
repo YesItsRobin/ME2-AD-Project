@@ -24,7 +24,7 @@ public class ReadStrain extends BaseReader {
     }
 
     //Turns an ugly String row into a usable Strain
-    private Strain buildStrain(String row){
+    private static Strain buildStrain(String row){
             ArrayList<String> dataSplit = new ArrayList<>(List.of(row.split(";"))); //split data and put it in an arraylist
 
             //initializes the attributes and do the needed parses and replacements
