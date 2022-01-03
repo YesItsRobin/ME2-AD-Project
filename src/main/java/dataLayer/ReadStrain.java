@@ -34,7 +34,13 @@ public class ReadStrain extends BaseReader{
 
             LocalDateTime dateTime = LocalDateTime.parse(dataSplit.get(0).replace("Z", ""));
             String sensorName = dataSplit.get(1);
-            int waarde = Integer.parseInt(dataSplit.get(2).replace(",", ""));
+            int waarde;
+    try {
+        waarde = Integer.parseInt(dataSplit.get(2).replace(",", ""));
+    }
+    catch (NumberFormatException e){
+        waarde = 0;
+    }
             String unit = dataSplit.get(3);
             float kopAfstand = Float.parseFloat(dataSplit.get(5).replace(",", "."));
             String element = dataSplit.get(6); //all attributes given in the .csv files
