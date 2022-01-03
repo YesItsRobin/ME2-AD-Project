@@ -3,12 +3,14 @@ package dataLayer;
 import models.Brugdeel;
 import models.Strain;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadStrain extends BaseReader{
+public class ReadStrain extends BaseReader {
 
     //getStrains returns a pretty Arraylist of Strains of a given group and number
     public ArrayList<Strain> getStrains(int group, int number) throws IOException {
@@ -38,7 +40,7 @@ public class ReadStrain extends BaseReader{
     try {
         waarde = Integer.parseInt(dataSplit.get(2).replace(",", ""));
     }
-    catch (NumberFormatException e){
+     catch (NumberFormatException e){
         waarde = 0;
     }
             String unit = dataSplit.get(3);
@@ -46,7 +48,81 @@ public class ReadStrain extends BaseReader{
             String element = dataSplit.get(6); //all attributes given in the .csv files
 
             return new Strain(dateTime,sensorName, waarde, unit, brugdeel, kopAfstand, element);
+            }
+            
+    public static List<Strain> strainsFromTimeframe(LocalDateTime begin, LocalDateTime end) throws IOException {
+        List<Strain> strainsDate = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < new File("SensordataBridgeProjectApplicationDevelopment\\strain-group" + (i + 1)).list().length; j++) {
+                System.out.println("SensordataBridgeProjectApplicationDevelopment\\strain-group" + (i + 1) + (j + 1));
+                boolean dataExtracted = false;
+                boolean dataFound = false;
+                int index = findIndex(i + 1, j + 1, begin);
+                BufferedReader csvReader = getBufferedReader(i + 1, j + 1, index);
+                try {
+                    while (!dataExtracted) {
+                        Strain strain = buildStrain(csvReader.readLine());
+                        boolean statement = strain.getDateTime().isAfter(begin) && strain.getDateTime().isBefore(end);
+
+                        if (statement) {
+                            strainsDate.add(strain);
+                            dataFound=true;
+                        }
+                        if ((!statement) && dataFound) {
+                            dataExtracted = true;
+                        }
+                        index+=100;
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+//                System.out.println(strainsDate);
+            }
+        }
+        return strainsDate;
     }
+    
 
+    
 
+    public static int findIndex(int group, int number, LocalDateTime begin) throws IOException {
+        int index = 0;
+        boolean done = false;
+        while (!done) {
+            Strain strain = buildStrain(readCSVRow(group, number, index));
+            if (strain.getDateTime().compareTo(begin)<0){index+=100000;}
+            else if (strain.getDateTime().compareTo(begin)>=0){index-=100000; done=true;}
+        }
+
+        done = false;
+        while (!done) {
+            Strain strain = buildStrain(readCSVRow(group, number, index));
+            if (strain.getDateTime().compareTo(begin)<0){index+=10000;}
+            else if (strain.getDateTime().compareTo(begin)>=0){index-=10000; done=true;}
+            }
+
+        done = false;
+        while (!done) {
+            Strain strain = buildStrain(readCSVRow(group, number, index));
+            if (strain.getDateTime().compareTo(begin)<0){index+=1000;}
+            else if (strain.getDateTime().compareTo(begin)>=0){index-=1000; done=true;}
+        }
+
+        done = false;
+        while (!done) {
+            Strain strain = buildStrain(readCSVRow(group, number, index));
+            if (strain.getDateTime().compareTo(begin)<0){index+=100;}
+            else if (strain.getDateTime().compareTo(begin)>=0){index-=100; done=true;}
+        }
+
+        done = false;
+        while (!done) {
+            Strain strain = buildStrain(readCSVRow(group, number, index));
+            if (strain.getDateTime().compareTo(begin)<0){index+=1;}
+            else if (strain.getDateTime().compareTo(begin)>=0){done=true;}
+        }
+
+        return index;
+    }
 }
+

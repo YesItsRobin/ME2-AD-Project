@@ -1,6 +1,7 @@
 package dataLayer;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,4 +18,30 @@ public abstract class BaseReader {
         }
         return data;    //returns an arraylist with all rows of data, this is ugly since it is not split yet, it will look like "column1;column2;column3;..."
     }
+
+    public static String readCSVRow(int group, int number, int index) throws IOException {
+        StrainFile testStrain = new StrainFile(group, number);
+        BufferedReader csvReader = new BufferedReader(new FileReader(testStrain.getPath()));
+        String row = csvReader.readLine();
+        row = csvReader.readLine();
+
+        for (int i = 0; i < index; i++) {
+            row = csvReader.readLine();
+        }
+
+        return row;
+    }
+
+    public static BufferedReader getBufferedReader(int group, int number, int index) throws IOException{
+        StrainFile testStrain = new StrainFile(group, number);
+        BufferedReader csvReader = new BufferedReader(new FileReader(testStrain.getPath()));
+        String row;
+        row = csvReader.readLine();
+
+        for (int i = 0; i < index; i++) {
+            row = csvReader.readLine();
+        }
+        return csvReader;
+    }
+
 }
