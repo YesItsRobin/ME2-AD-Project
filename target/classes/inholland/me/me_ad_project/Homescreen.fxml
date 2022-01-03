@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.HomeScreenController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeScreenController">
+    <Button layoutX="88.0" layoutY="174.0" mnemonicParsing="false" onAction="#statScreen" prefHeight="26.0" prefWidth="94.0" text="Statistics" />
+    <Button layoutX="408.0" layoutY="174.0" mnemonicParsing="false" onAction="#TimeLapse" prefHeight="26.0" prefWidth="94.0" text="TimeLapse" />
+    <Button layoutX="88.0" layoutY="343.0" mnemonicParsing="false" onAction="#Bridge" prefHeight="26.0" prefWidth="94.0" text="Bridge" />
+    <Button layoutX="408.0" layoutY="343.0" mnemonicParsing="false" onAction="#About" prefHeight="26.0" prefWidth="94.0" text="About" />
+    <ImageView fitHeight="142.0" fitWidth="138.0" layoutX="66.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../../images/bar_graph.png" />
+    </ImageView>
+    <ImageView fitHeight="162.0" fitWidth="145.0" layoutX="383.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../../images/line_graph.PNG" />
+    </ImageView>
+    <ImageView fitHeight="92.0" fitWidth="145.0" layoutX="63.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../../images/ritsumasyl_bridge.jpg" />
+    </ImageView>
+    <ImageView fitHeight="125.0" fitWidth="130.0" layoutX="393.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../../images/info_symbol.png" />
+    </ImageView>
+   <Button layoutX="518.0" layoutY="359.0" mnemonicParsing="false" onAction="#closeStage" prefHeight="26.0" prefWidth="68.0" text="Quit" />
 </AnchorPane>
