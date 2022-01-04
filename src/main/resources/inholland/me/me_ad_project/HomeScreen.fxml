@@ -5,21 +5,21 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="479.0" prefWidth="669.0" snapToPixel="false" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeScreenController">
-    <Button layoutX="88.0" layoutY="174.0" mnemonicParsing="false" onAction="#statScreen" prefHeight="26.0" prefWidth="94.0" text="Statistics" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="200.0" />
-    <Button layoutX="408.0" layoutY="174.0" mnemonicParsing="false" onAction="#TimeLapse" prefHeight="26.0" prefWidth="94.0" text="TimeLapse" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="200.0" />
-    <Button layoutX="88.0" layoutY="343.0" mnemonicParsing="false" onAction="#Bridge" prefHeight="26.0" prefWidth="94.0" text="Bridge" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="100.0" />
-    <Button layoutX="408.0" layoutY="343.0" mnemonicParsing="false" onAction="#About" prefHeight="26.0" prefWidth="94.0" text="About" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="100.0" />
-    <ImageView fitWidth="150.0" layoutX="66.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="35.0">
+<AnchorPane minHeight="600.0" minWidth="900.0" prefHeight="605.0" prefWidth="910.0" snapToPixel="false" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeScreenController">
+    <Button layoutX="175.0" layoutY="260.0" mnemonicParsing="false" onAction="#statScreen" prefHeight="26.0" prefWidth="94.0" text="Statistics" AnchorPane.leftAnchor="175.0" AnchorPane.topAnchor="260.0" />
+    <Button layoutX="631.0" layoutY="260.0" mnemonicParsing="false" onAction="#TimeLapse" prefHeight="26.0" prefWidth="94.0" text="TimeLapse" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="260.0" />
+    <Button layoutX="175.0" layoutY="494.0" mnemonicParsing="false" onAction="#Bridge" prefHeight="26.0" prefWidth="94.0" text="Bridge" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="175.0" />
+    <Button layoutX="631.0" layoutY="494.0" mnemonicParsing="false" onAction="#About" prefHeight="26.0" prefWidth="94.0" text="About" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="185.0" />
+    <ImageView fitWidth="150.0" layoutX="147.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="147.0" AnchorPane.topAnchor="96.0">
         <Image url="@../../../images/bar_graph.png" />
     </ImageView>
-    <ImageView fitHeight="162.0" fitWidth="150.0" layoutX="383.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="35.0">
+    <ImageView fitHeight="162.0" fitWidth="150.0" layoutX="603.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="157.0" AnchorPane.topAnchor="93.0">
         <Image url="@../../../images/line_graph.PNG" />
     </ImageView>
-    <ImageView fitHeight="92.0" fitWidth="150.0" layoutX="63.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="80.0">
+    <ImageView fitHeight="99.0" fitWidth="150.0" layoutX="147.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="141.0" AnchorPane.leftAnchor="147.0">
         <Image url="@../../../images/ritsumasyl_bridge.jpg" />
     </ImageView>
-    <ImageView fitHeight="125.0" fitWidth="150.0" layoutX="393.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="80.0">
+    <ImageView fitHeight="157.0" fitWidth="150.0" layoutX="603.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="120.0" AnchorPane.rightAnchor="157.0">
         <Image url="@../../../images/info_symbol.png" />
     </ImageView>
    <Button layoutX="518.0" layoutY="359.0" mnemonicParsing="false" onAction="#closeStage" prefHeight="26.0" prefWidth="68.0" text="Quit" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
