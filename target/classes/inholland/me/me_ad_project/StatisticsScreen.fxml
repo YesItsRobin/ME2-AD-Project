@@ -5,20 +5,26 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StatisticsScreenController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="685.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StatisticsScreenController">
    <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Home" text="Home" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
    <Button layoutX="546.0" layoutY="360.0" mnemonicParsing="false" onAction="#closeStage" text="Quit" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
    <CheckBox layoutX="112.0" layoutY="47.0" mnemonicParsing="false" onAction="#CheckRainfall" prefHeight="18.0" prefWidth="132.0" text="Rainfall" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="50.0" />
    <CheckBox layoutX="307.0" layoutY="47.0" mnemonicParsing="false" onAction="#CheckTemp" text="Temperature" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="50.0" />
    <CheckBox layoutX="520.0" layoutY="47.0" mnemonicParsing="false" onAction="#CheckWind" text="Windspeed" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="50.0" />
-   <LineChart layoutX="14.0" layoutY="195.0" prefHeight="351.0" prefWidth="862.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="20.0">
+   <LineChart fx:id="statGraph" layoutX="16.0" layoutY="161.0" prefHeight="438.0" prefWidth="866.0" title="Statistic" AnchorPane.bottomAnchor="0.6000000000000227" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="18.0">
      <xAxis>
-       <CategoryAxis side="BOTTOM" />
+       <CategoryAxis fx:id="XLabel" label="Click Checkbox to start comparing" side="BOTTOM" />
      </xAxis>
      <yAxis>
-       <NumberAxis side="LEFT" />
+       <NumberAxis label="Strain" side="LEFT" />
      </yAxis>
    </LineChart>
+   <Button layoutX="821.0" layoutY="5.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="TO PDF" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+   <Text layoutX="414.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age of Bridge" />
+   <Text fx:id="ageLabel" layoutX="550.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="30.46875" />
+   <Slider fx:id="ageSlider" layoutX="172.0" layoutY="155.0" onMouseMoved="#changeAgeLabel" prefHeight="14.0" prefWidth="554.0" showTickLabels="true" showTickMarks="true" />
 </AnchorPane>
