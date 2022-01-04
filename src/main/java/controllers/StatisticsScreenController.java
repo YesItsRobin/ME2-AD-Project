@@ -33,34 +33,28 @@ public  class StatisticsScreenController extends BaseController implements Initi
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         influenceBox.getItems().addAll("Rainfall", "Temperature", "Wind");
-        influenceBox.getSelectionModel().select("Rainfall");;
+    }
+
+    public void ChangeInfluence(ActionEvent mouseEvent) {
+        setInfluence((String) influenceBox.getValue());
+        XLabel.setLabel(getInfluence());
 
         XYChart.Series set = new XYChart.Series();
         LocalDateTime from = LocalDateTime.of(LocalDate.of(2019+getBridgeAge(),1,1), LocalTime.of(0,0,0));
         LocalDateTime to = LocalDateTime.of(LocalDate.of(2020+getBridgeAge(),1,1), LocalTime.of(0,0,0));
 
         try {
-            addStrains((ReadStrain.strainsFromTimeframe(from,to)),set);
+            if (Objects.equals(getInfluence(), "Rainfall")){
+                for (Strain strain: ReadStrain.strainsFromTimeframe(from,to)){
+                    set.getData().add(new XYChart.Data(21, strain.getWaarde()));
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
 
         statGraph.getData().addAll(set);
-    }
-
-    public void addStrains(List<Strain> strainList, XYChart.Series set){
-        if (Objects.equals(getInfluence(), "Rainfall")){
-            for (Strain strain: strainList){
-                set.getData().add(new XYChart.Data(21, strain.getWaarde(),5));
-            }
-        }
-
-    }
-
-    public void ChangeInfluence(ActionEvent mouseEvent) {
-        setInfluence((String) influenceBox.getValue());
-        XLabel.setLabel(getInfluence());
     }
 
     public void changeAgeLabel(){

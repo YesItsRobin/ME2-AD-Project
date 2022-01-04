@@ -5,10 +5,12 @@ import models.Strain;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ReadStrain extends BaseReader {
 
@@ -53,30 +55,35 @@ public class ReadStrain extends BaseReader {
     public static List<Strain> strainsFromTimeframe(LocalDateTime begin, LocalDateTime end) throws IOException {
         List<Strain> strainsDate = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < new File("SensordataBridgeProjectApplicationDevelopment\\strain-group" + (i + 1)).list().length; j++) {
-                System.out.println("SensordataBridgeProjectApplicationDevelopment\\strain-group" + (i + 1) + (j + 1));
-                boolean dataExtracted = false;
-                boolean dataFound = false;
-                int index = findIndex(i + 1, j + 1, begin);
-                BufferedReader csvReader = getBufferedReader(i + 1, j + 1, index);
-                try {
-                    while (!dataExtracted) {
-                        Strain strain = buildStrain(csvReader.readLine());
-                        boolean statement = strain.getDateTime().isAfter(begin) && strain.getDateTime().isBefore(end);
+            try {
+                for (int j = 0; j < 1; j++) {
+                    System.out.println("SensordataBridgeProjectApplicationDevelopment\\strain-group" + (i + 1) + (j + 1));
+                    boolean dataExtracted = false;
+                    boolean dataFound = false;
+                    int index = findIndex(i + 1, j + 1, begin);
+                    BufferedReader csvReader = getBufferedReader(i + 1, j + 1, index);
+                    try {
+                        while (!dataExtracted) {
+                            Strain strain = buildStrain(csvReader.readLine());
+                            boolean statement = strain.getDateTime().isAfter(begin) && strain.getDateTime().isBefore(end);
 
-                        if (statement) {
-                            strainsDate.add(strain);
-                            dataFound=true;
+                            if (statement) {
+                                strainsDate.add(strain);
+                                dataFound = true;
+                            }
+                            if ((!statement) && dataFound) {
+                                dataExtracted = true;
+                            }
+                            index += 100;
                         }
-                        if ((!statement) && dataFound) {
-                            dataExtracted = true;
-                        }
-                        index+=100;
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 //                System.out.println(strainsDate);
+                }
+            }
+            catch (Exception e) {
+                System.out.println(e);
             }
         }
         return strainsDate;
