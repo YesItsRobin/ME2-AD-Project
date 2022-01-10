@@ -13,7 +13,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class TimeLapseScreenController {
+public class TimeLapseScreenController extends BaseController{
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -30,15 +30,5 @@ public class TimeLapseScreenController {
 
     @FXML
     private MenuButton factorMenu;
-
-
-    @FXML
-    void showHomepage(ActionEvent event)  throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("Homescreen.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
 }
