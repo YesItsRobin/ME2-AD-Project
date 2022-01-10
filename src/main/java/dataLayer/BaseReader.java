@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 //An abstract class that makes it possible to read any given csv
 public abstract class BaseReader {
-    public ArrayList<String> readCSV(String path) throws IOException {
+    public static ArrayList<String> readCSV(String path) throws IOException {
         BufferedReader csvReader = new BufferedReader(new FileReader(path));    //Opens the file
         String row = csvReader.readLine();          //reads the first row and puts it in the row variable
         ArrayList<String> data = new ArrayList<String>();//Creates an ArrayList to fill it with the data

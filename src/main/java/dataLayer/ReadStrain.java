@@ -13,10 +13,11 @@ import java.util.List;
 public class ReadStrain extends BaseReader {
 
     //getStrains returns a pretty Arraylist of Strains of a given group and number
-    public ArrayList<Strain> getStrains(int group, int number) throws IOException {
+    public static ArrayList<Strain> getStrains(int group, int number) throws IOException {
         StrainFile file = new StrainFile(group, number);        //Uses the StrainFile class to get access to that group and number's csv
         ArrayList<String> data = readCSV(file.getPath());       //Calls the BaseReader, gets an ugly ArrayList back
         ArrayList<Strain> strains = new ArrayList<Strain>();    //Creates an empty arraylist of Strains
+        data.remove(0);
         for (String row: data) {
             strains.add(buildStrain(row));  //Adds the row as a Strain, check the buildStrain method
         }
@@ -27,7 +28,7 @@ public class ReadStrain extends BaseReader {
     private static Strain buildStrain(String row){
             ArrayList<String> dataSplit = new ArrayList<>(List.of(row.split(";"))); //split data and put it in an arraylist
 
-            //initializes the attributes and do the needed parses and replacements
+        //initializes the attributes and do the needed parses and replacements
             Brugdeel brugdeel = switch (dataSplit.get(4)) { //gives the attribute brugdeel a t or f, if not draai or vast it throws an exception
                 case "draai" -> Brugdeel.draai;
                 case "vast"  -> Brugdeel.vast;
@@ -36,9 +37,9 @@ public class ReadStrain extends BaseReader {
 
             LocalDateTime dateTime = LocalDateTime.parse(dataSplit.get(0).replace("Z", ""));
             String sensorName = dataSplit.get(1);
-            int waarde;
+            float waarde;
     try {
-        waarde = Integer.parseInt(dataSplit.get(2).replace(",", ""));
+        waarde = Float.parseFloat(dataSplit.get(2).replace(",", "."));
     }
      catch (NumberFormatException e){
         waarde = 0;
@@ -71,7 +72,7 @@ public class ReadStrain extends BaseReader {
                         if ((!statement) && dataFound) {
                             dataExtracted = true;
                         }
-                        index+=100;
+                        index+=1;
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
