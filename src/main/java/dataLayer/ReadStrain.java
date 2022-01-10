@@ -13,7 +13,7 @@ import java.util.List;
 public class ReadStrain extends BaseReader {
 
     //getStrains returns a pretty Arraylist of Strains of a given group and number
-    public ArrayList<Strain> getStrains(int group, int number) throws IOException {
+    public static ArrayList<Strain> getStrains(int group, int number) throws IOException {
         StrainFile file = new StrainFile(group, number);        //Uses the StrainFile class to get access to that group and number's csv
         ArrayList<String> data = readCSV(file.getPath());       //Calls the BaseReader, gets an ugly ArrayList back
         ArrayList<Strain> strains = new ArrayList<Strain>();    //Creates an empty arraylist of Strains

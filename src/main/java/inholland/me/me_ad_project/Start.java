@@ -1,5 +1,7 @@
 package inholland.me.me_ad_project;
 
+import dataLayer.BaseReader;
+import dataLayer.MathHelper;
 import dataLayer.ReadStrain;
 import javafx.application.Application;
 import javafx.stage.Stage;  //stage is another word for window
@@ -7,9 +9,7 @@ import models.Strain;
 import views.HomeScreen;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
+import java.util.ArrayList;
 
 
 //This is the main class that starts the application. Don't add to this class unless absolutely necessary!!
