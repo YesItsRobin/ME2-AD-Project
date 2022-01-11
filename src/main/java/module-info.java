@@ -2,8 +2,8 @@ module inholland.me.me_ad_project {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.jetbrains.annotations;
-    requires opencsv;
     requires commons.math3;
+    requires opencsv;
 
 
     opens inholland.me.me_ad_project to javafx.fxml;
