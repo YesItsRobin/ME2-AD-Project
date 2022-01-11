@@ -43,10 +43,11 @@ public class TimeLapseScreenController extends BaseController implements Initial
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // Create new line on chart
+        // Create new line to go on the chart
         XYChart.Series series = new XYChart.Series();
         series.setName("Strain");
 
+        // Create a matrix with data points
         Object[][] strain = new Object[4][2];
         strain[0][0] = "Jan 1";
         strain[0][1] = 244;
@@ -56,6 +57,7 @@ public class TimeLapseScreenController extends BaseController implements Initial
         strain[2][1] = 240;
         strain[3][0] = "Jan 4";
         strain[3][1] = 230;
+        
         // Add data points to make line
         for(int i=0; i<strain.length; i++) {
             series.getData().add(new XYChart.Data(strain[i][0], strain[i][1]));
