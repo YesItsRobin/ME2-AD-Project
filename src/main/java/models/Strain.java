@@ -1,6 +1,8 @@
 package models;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 
 public class Strain {
     private LocalDateTime dateTime;
@@ -10,12 +12,15 @@ public class Strain {
     private Brugdeel brugdeel; //because there are only two options (vast:true and draai: false) we can use a boolean
     private float kopAfstand;
     private String element; //all attributes given in the .csv files
+    int age;
+
+    private final LocalDate beginDate = LocalDate.of(2019,11,27);
 
     //Empty constructor
     public Strain(){}
 
     //Overloaded constructor
-    public Strain(LocalDateTime dateTime, String sensorName, int waarde, String unit, Brugdeel brugdeel, float kopAfstand, String element) {
+    public Strain(LocalDateTime dateTime, String sensorName, float waarde, String unit, Brugdeel brugdeel, float kopAfstand, String element) {
         this.dateTime = dateTime;
         this.sensorName = sensorName;
         this.waarde = waarde;
@@ -23,6 +28,7 @@ public class Strain {
         this.brugdeel = brugdeel;
         this.kopAfstand = kopAfstand;
         this.element = element;
+        this.age = Period.between(beginDate, LocalDate.from(dateTime)).getDays() ;
     }
 
 
@@ -93,5 +99,13 @@ public class Strain {
 
     public void setElement(String element) {
         this.element = element;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
     }
 }
