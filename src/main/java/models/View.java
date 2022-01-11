@@ -13,6 +13,8 @@ public abstract class View {
         FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource(file));
         Scene scene = new Scene(fxmlLoader.load(), 620, 440); //v = xas, v1 = yas
         Stage stage = new Stage();  //the scene contains the fxml info, the stage contains the scene
+        stage.setMinHeight(600);
+        stage.setMinWidth(1000);
         stage.setScene(scene);      //put the scene in the stage
         return stage;
     }

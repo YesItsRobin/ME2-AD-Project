@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="commons-net-3.8">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/src/main/resources/commons-net-3.8.0" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/commons-math3-3.6.1-bin/commons-math3-3.6.1/commons-math3-3.6.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/src/main/resources/commons-net-3.8.0/apidocs" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/src/main/resources/commons-net-3.8.0" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/src/main/resources/commons-net-3.8.0" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/src/main/resources/commons-net-3.8.0" recursive="false" type="SOURCES" />
+  </library>
+</component>

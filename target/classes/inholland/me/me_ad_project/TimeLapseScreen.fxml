@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.TimeLapseScreenController">
-   <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Home" text="Home"/>
-   <Button layoutX="546.0" layoutY="360.0" mnemonicParsing="false" onAction="#closeStage" text="Quit"/>
-   <Text layoutX="183.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TODO: MAKE TIMELAPSE SCREEN HERE"
-         wrappingWidth="250.936767578125"/>
+<AnchorPane fx:id="TimelapseScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TimeLapseScreenController">
+    <children>
+        <MenuButton fx:id="strainGroupMenu" layoutX="84.0" layoutY="38.0" mnemonicParsing="false" text="Strain Group 1">
+            <items>
+                <MenuItem mnemonicParsing="false" text="Group 1" />
+                <MenuItem mnemonicParsing="false" text="Group 2" />
+                <MenuItem mnemonicParsing="false" text="Group 3" />
+                <MenuItem mnemonicParsing="false" text="Group 4" />
+                <MenuItem mnemonicParsing="false" text="Group 5" />
+                <MenuItem mnemonicParsing="false" text="Group 6" />
+                <MenuItem mnemonicParsing="false" text="Group 7" />
+                <MenuItem mnemonicParsing="false" text="Group 8" />
+            </items>
+        </MenuButton>
+        <LineChart layoutX="150.0" layoutY="176.0">
+            <xAxis>
+                <CategoryAxis side="BOTTOM" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT" />
+            </yAxis>
+        </LineChart>
+        <Button fx:id="homeButton" layoutX="663.0" layoutY="38.0" mnemonicParsing="false" onAction="#Home" text="Homepage" />
+        <MenuButton fx:id="factorMenu" layoutX="290.0" layoutY="38.0" mnemonicParsing="false" text="Factor">
+            <items>
+                <MenuItem mnemonicParsing="false" text="Rainfall" />
+                <MenuItem mnemonicParsing="false" text="Wind speed" />
+            </items>
+        </MenuButton>
+        <DatePicker layoutX="84.0" layoutY="86.0" />
+        <DatePicker layoutX="84.0" layoutY="130.0" />
+        <Label layoutX="25.0" layoutY="87.0" text="From" />
+        <Label layoutX="34.0" layoutY="138.0" text="To" />
+        <MenuButton layoutX="446.0" layoutY="38.0" mnemonicParsing="false" text="Option">
+            <items>
+                <MenuItem mnemonicParsing="false" text="Average" />
+                <MenuItem mnemonicParsing="false" text="Maximum" />
+            </items>
+        </MenuButton>
+    </children>
 </AnchorPane>
