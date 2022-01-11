@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.URL;
@@ -13,18 +14,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
-public class TimeLapseScreenController extends BaseController implements Initializable {
+public class TimeLapseScreenController extends BaseController implements Initializable{
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private Stage dialogStage;
 
-
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
     @FXML
     private AnchorPane TimelapseChart;
 
@@ -35,17 +39,31 @@ public class TimeLapseScreenController extends BaseController implements Initial
     private MenuButton strainGroupMenu;
 
     @FXML
+    private void activate(ActionEvent event) {
+    }
+
+    @FXML
+    private void deactivate(ActionEvent event){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(dialogStage);
+            alert.setTitle("Not available");
+            alert.setHeaderText("Only strain group 1 available");
+            alert.setContentText(" ");
+
+            alert.showAndWait();
+    }
+    @FXML
     private Button homeButton;
 
     @FXML
     private MenuButton factorMenu;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         // Create new line to go on the chart
         XYChart.Series series = new XYChart.Series();
-        series.setName("Strain");
+        series.setName("Strain - Group 1");
 
         // Create a matrix with data points
         Object[][] strain = new Object[4][2];
@@ -57,7 +75,7 @@ public class TimeLapseScreenController extends BaseController implements Initial
         strain[2][1] = 240;
         strain[3][0] = "Jan 4";
         strain[3][1] = 230;
-        
+
         // Add data points to make line
         for(int i=0; i<strain.length; i++) {
             series.getData().add(new XYChart.Data(strain[i][0], strain[i][1]));
@@ -65,4 +83,5 @@ public class TimeLapseScreenController extends BaseController implements Initial
         // Add series to LineChart
         timelapseChart.getData().add(series);
     }
-}
+    }
+
