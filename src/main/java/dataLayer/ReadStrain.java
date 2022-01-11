@@ -19,7 +19,8 @@ public class ReadStrain extends BaseReader {
         ArrayList<Strain> strains = new ArrayList<Strain>();    //Creates an empty arraylist of Strains
         data.remove(0);
         for (String row: data) {
-            strains.add(buildStrain(row));  //Adds the row as a Strain, check the buildStrain method
+            Strain tempStrain = buildStrain(row);
+            if (tempStrain.getWaarde() < 0 || tempStrain.getWaarde() >= 0) strains.add(tempStrain);  //Adds the row as a Strain after checking if waarde has a number as a value, check the buildStrain method
         }
         return strains;
     }
@@ -37,13 +38,7 @@ public class ReadStrain extends BaseReader {
 
             LocalDateTime dateTime = LocalDateTime.parse(dataSplit.get(0).replace("Z", ""));
             String sensorName = dataSplit.get(1);
-            float waarde;
-    try {
-        waarde = Float.parseFloat(dataSplit.get(2).replace(",", "."));
-    }
-     catch (NumberFormatException e){
-        waarde = 0;
-    }
+            float waarde = Float.parseFloat(dataSplit.get(2).replace(",", "."));
             String unit = dataSplit.get(3);
             float kopAfstand = Float.parseFloat(dataSplit.get(5).replace(",", "."));
             String element = dataSplit.get(6); //all attributes given in the .csv files
