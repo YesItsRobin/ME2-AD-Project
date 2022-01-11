@@ -10,7 +10,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="TimelapseScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TimeLapseScreenController">
+<AnchorPane fx:id="TimelapseScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TimeLapseScreenController">
     <children>
         <MenuButton fx:id="strainGroupMenu" layoutX="84.0" layoutY="38.0" mnemonicParsing="false" text="Strain Group 1">
             <items>
@@ -24,7 +24,7 @@
                 <MenuItem mnemonicParsing="false" text="Group 8" />
             </items>
         </MenuButton>
-        <LineChart layoutX="150.0" layoutY="176.0">
+        <LineChart fx:id="timelapseChart" layoutX="150.0" layoutY="176.0">
             <xAxis>
                 <CategoryAxis side="BOTTOM" />
             </xAxis>
