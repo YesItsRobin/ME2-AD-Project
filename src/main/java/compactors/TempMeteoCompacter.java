@@ -1,6 +1,7 @@
-package dataLayer;
+package compactors;
 
 import com.opencsv.CSVWriter;
+import dataLayer.ReadMeteo;
 import models.Meteo;
 
 import java.io.File;
