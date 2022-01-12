@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="TimelapseScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TimeLapseScreenController">
     <children>
-        <MenuButton fx:id="strainGroupMenu" layoutX="84.0" layoutY="38.0" mnemonicParsing="false" text="Strain Group">
+        <MenuButton fx:id="strainGroupMenu" layoutX="84.0" layoutY="38.0" mnemonicParsing="false" text="Choose Strain Group">
             <items>
                 <MenuItem fx:id="group1" mnemonicParsing="false" onAction="#activate" text="Group 1" />
                 <MenuItem fx:id="group2" mnemonicParsing="false" onAction="#deactivate" text="Group 2" />
