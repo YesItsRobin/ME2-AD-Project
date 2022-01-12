@@ -1,6 +1,7 @@
 package models;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class CompactMeteo {
     private LocalDate date;
@@ -11,6 +12,7 @@ public class CompactMeteo {
     private float luchtdruk;
     private float neerslag;
     private float zonneschijn;
+    private final static LocalDate beginDate = LocalDate.of(2019, 11, 27);
 
     public CompactMeteo(LocalDate date, float temp, float windsnelheid, float windrichting, float luchvochtigheid, float luchtdruk, float neerslag, float zonneschijn) {
         this.date = date;
@@ -21,6 +23,11 @@ public class CompactMeteo {
         this.luchtdruk = luchtdruk;
         this.neerslag = neerslag;
         this.zonneschijn = zonneschijn;
+    }
+
+    public int getAge() {
+        // https://stackoverflow.com/questions/20165564/calculating-days-between-two-dates-with-java
+        return (int) ChronoUnit.DAYS.between(beginDate, this.date);
     }
 
     public LocalDate getDate() {
