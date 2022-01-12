@@ -18,10 +18,9 @@ public class SimRegression {
 
     public void Build(){
         for(CompactStrain strain : getStrainList()){
-            if (getInf()==Influences.age) {
-                getReg().addData(strain.getAverage(), strain.getAge());
-            }
+            getReg().addData(strain.getAge(),strain.getAverage());
         }
+
     }
 
     public Double getY(double x){

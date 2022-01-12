@@ -61,16 +61,16 @@ public class TimeLapseScreenController extends BaseController implements Initial
     private void activate(ActionEvent event) {
     }
 
-    @FXML
-    private void deactivate(ActionEvent event){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(dialogStage);
-            alert.setTitle("Not available");
-            alert.setHeaderText("Only strain group 1 available");
-            alert.setContentText(" ");
+    public void Factor(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(dialogStage);
+        alert.setTitle("Not available");
+        alert.setHeaderText("Only strain group 1 available");
+        alert.setContentText(" ");
 
-            alert.showAndWait();
+        alert.showAndWait();
     }
+
     @FXML
     private Button homeButton;
 
@@ -84,14 +84,14 @@ public class TimeLapseScreenController extends BaseController implements Initial
                 NumberAxis xAxis = new NumberAxis();
                 NumberAxis yAxis = new NumberAxis();
 
-                XYChart.Series<Double, Double> series = new XYChart.Series<>();
+                XYChart.Series<String, String> series = new XYChart.Series<>();
                 series.setName("Strain - Group 1");
 
             try {
                 ArrayList<CompactStrain> strains = ReadCompactStrain.getStrains(1, 1);
                 SimRegression reg = new SimRegression(strains, Influences.age);
                 for (int i = 0; i < strains.toArray().length; i++) {
-                    series.getData().add(new XYChart.Data<>((double) i, reg.getY(i)));
+                    series.getData().add(new XYChart.Data<>(String.valueOf(i), String.valueOf(reg.getY(i))));
                 }
             } catch (IOException ignored) {
             }
@@ -103,5 +103,7 @@ public class TimeLapseScreenController extends BaseController implements Initial
 
 
     }
-    }
+
+
+}
 
