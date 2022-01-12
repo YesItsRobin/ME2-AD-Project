@@ -1,7 +1,6 @@
 package dataLayer;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +9,6 @@ import java.util.ArrayList;
 public abstract class BaseReader {
     public static ArrayList<String> readCSV(String path) throws IOException {
         BufferedReader csvReader = new BufferedReader(new FileReader(path));    //Opens the file
-        csvReader.readLine();
         String row = csvReader.readLine();          //reads the first row and puts it in the row variable
         ArrayList<String> data = new ArrayList<String>();//Creates an ArrayList to fill it with the data
         while (row != null) {   //This loop stops when it reaches the end of the file, then row will be null
