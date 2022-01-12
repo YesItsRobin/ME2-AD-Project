@@ -1,35 +1,24 @@
 package controllers;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import dataLayer.ReadCompactStrain;
-import dataLayer.ReadStrain;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import models.CompactStrain;
 import models.Influences;
 import models.SimRegression;
-import models.Strain;
-import org.apache.commons.math3.stat.regression.SimpleRegression;
 
 public class TimeLapseScreenController extends BaseController implements Initializable{
     public MenuItem group1;
@@ -61,6 +50,7 @@ public class TimeLapseScreenController extends BaseController implements Initial
 
     @FXML
     private void activate(ActionEvent event) {
+
     }
 
     public void Factor(ActionEvent actionEvent) {
@@ -97,12 +87,15 @@ public class TimeLapseScreenController extends BaseController implements Initial
         series.setName("Strain - Group 1");
 
         try {
-            ArrayList<CompactStrain> strains = ReadCompactStrain.getStrains(1, 1);
-            SimRegression reg = new SimRegression(strains, Influences.age);
-            for (int i = 0; i < maxAge; i++) {
-                series.getData().add(new XYChart.Data<>(i, reg.getY(i)));
+            for (int i = 1; i < 11; i++) {
+                ArrayList<CompactStrain> strains = ReadCompactStrain.getStrains(1, i);
+                SimRegression reg = new SimRegression(strains, Influences.age);
+                for (int j = 0; j < maxAge; j++) {
+                    series.getData().add(new XYChart.Data<>(j, reg.getY(j)));
+                }
             }
-        } catch (IOException ignored) {
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         timelapseChart.getData().add(series);
