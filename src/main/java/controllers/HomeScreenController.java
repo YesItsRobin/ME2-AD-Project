@@ -26,6 +26,7 @@ public class HomeScreenController extends BaseController {
     }
 
     public void TimeLapse(ActionEvent actionEvent) throws IOException {
+
         Stage stage = TimeLapseScreen.getTimeLapseScreen();
         stage.show();
         closeStage(actionEvent);

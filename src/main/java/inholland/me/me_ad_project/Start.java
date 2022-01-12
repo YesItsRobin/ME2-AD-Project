@@ -1,9 +1,7 @@
 package inholland.me.me_ad_project;
 
-import dataLayer.ReadCompactStrain;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import models.CompactStrain;
 import views.HomeScreen;
 
 import java.io.IOException;

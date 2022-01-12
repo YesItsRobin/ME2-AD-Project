@@ -32,6 +32,14 @@ import models.Strain;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
 
 public class TimeLapseScreenController extends BaseController implements Initializable{
+    public MenuItem group1;
+    public MenuItem group2;
+    public MenuItem group3;
+    public MenuItem group4;
+    public MenuItem group5;
+    public MenuItem group6;
+    public MenuItem group7;
+    public MenuItem group8;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -44,7 +52,7 @@ public class TimeLapseScreenController extends BaseController implements Initial
     private AnchorPane TimelapseChart;
 
     @FXML
-    private LineChart<Number,Number> timelapseChart;
+    private LineChart timelapseChart;
 
     @FXML
     private MenuButton strainGroupMenu;
@@ -73,25 +81,27 @@ public class TimeLapseScreenController extends BaseController implements Initial
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Create new line to go on the chart
-        NumberAxis xAxis = new NumberAxis();
-        NumberAxis yAxis = new NumberAxis();
+                NumberAxis xAxis = new NumberAxis();
+                NumberAxis yAxis = new NumberAxis();
 
-        XYChart.Series<Number,Number> series = new XYChart.Series<>();
-        series.setName("Strain - Group 1");
+                XYChart.Series<Double, Double> series = new XYChart.Series<>();
+                series.setName("Strain - Group 1");
 
-        try {
-            ArrayList<CompactStrain> strains = ReadCompactStrain.getStrains(1,1);
-            SimRegression reg= new SimRegression(strains, Influences.age);
-            for (int i=0;i<strains.toArray().length;i++) {
-                series.getData().add(new XYChart.Data<>(i, reg.getY(i)));
+            try {
+                ArrayList<CompactStrain> strains = ReadCompactStrain.getStrains(1, 1);
+                SimRegression reg = new SimRegression(strains, Influences.age);
+                for (int i = 0; i < strains.toArray().length; i++) {
+                    series.getData().add(new XYChart.Data<>((double) i, reg.getY(i)));
+                }
+            } catch (IOException ignored) {
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
 
-        // Add series to LineChart
-        timelapseChart.getData().add(series);
+            // Add series to LineChart
+            timelapseChart = new LineChart(xAxis,yAxis);
+            timelapseChart.getData().add(series);
+
+
     }
     }
 

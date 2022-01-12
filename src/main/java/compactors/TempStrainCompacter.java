@@ -1,6 +1,7 @@
-package dataLayer;
+package compactors;
 
 import com.opencsv.CSVWriter;
+import dataLayer.ReadStrain;
 import models.Strain;
 
 import java.io.File;
