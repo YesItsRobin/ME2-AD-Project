@@ -1,15 +1,13 @@
 package dataLayer;
 
-import models.Brugdeel;
 import models.CompactStrain;
-import models.Strain;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadCompactStrain extends BaseReader{
+public class ReadCompactStrain extends BaseReader {
     //getStrains returns a pretty Arraylist of Strains of a given group and number
     public static ArrayList<CompactStrain> getStrains(int group, int number) throws IOException {
         StrainFile file = new StrainFile(group, number, true);        //Uses the StrainFile class to get access to that group and number's csv

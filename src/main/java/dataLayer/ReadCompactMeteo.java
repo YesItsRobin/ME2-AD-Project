@@ -16,7 +16,7 @@ public class ReadCompactMeteo {
         ArrayList<CompactMeteo> meteoData = new ArrayList<>();    //Creates an empty arraylist of Strains
         data.remove(0);
         for (String row : data) {
-                meteoData.add(buildMeteoData(row));
+            meteoData.add(buildMeteoData(row));
         }
         return meteoData;
     }

@@ -1,7 +1,6 @@
 package dataLayer;
 
 import com.opencsv.CSVWriter;
-import models.CompactMeteo;
 import models.Meteo;
 
 import java.io.File;
