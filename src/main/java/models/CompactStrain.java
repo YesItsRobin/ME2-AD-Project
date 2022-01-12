@@ -17,6 +17,7 @@ public class CompactStrain {
     }
 
     public int getAge() {
+        // https://stackoverflow.com/questions/20165564/calculating-days-between-two-dates-with-java
         return (int) ChronoUnit.DAYS.between(beginDate, this.date);
     }
 
