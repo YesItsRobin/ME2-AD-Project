@@ -6,20 +6,20 @@ import java.util.ArrayList;
 
 public class SimRegression {
 
-    ArrayList<Strain> strainList;
+    ArrayList<CompactStrain> strainList;
     Influences inf;
     SimpleRegression reg = new SimpleRegression();
 
-    public SimRegression(ArrayList<Strain> strainList, Influences inf){
+    public SimRegression(ArrayList<CompactStrain> strainList, Influences inf){
         this.inf = inf;
         this.strainList = strainList;
         Build();
     }
 
     public void Build(){
-        for(Strain strain : getStrainList()){
+        for(CompactStrain strain : getStrainList()){
             if (getInf()==Influences.age) {
-                getReg().addData(strain.getWaarde(), strain.getAge());
+                getReg().addData(strain.getAverage(), strain.getAge());
             }
         }
     }
@@ -28,7 +28,7 @@ public class SimRegression {
         return getReg().predict(x);
     }
 
-    public ArrayList<Strain> getStrainList() {
+    public ArrayList<CompactStrain> getStrainList() {
         return strainList;
     }
 

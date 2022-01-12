@@ -15,7 +15,7 @@ public class StrainFile {
 
     public StrainFile(int group, int number, boolean compact) {   //The constructor accepts group and number, the path will be created inside the constructor
         //starts a list of all the filenames in a group
-        List<String> groupFile = List.of(new File("SensordataBridgeProjectApplicationDevelopment\\strain-group" + group).list());
+        List<String> groupFile = List.of(new File("SensordataBridgeProjectApplicationDevelopment\\strain-group" + group+"Compact").list());
         String numberString = groupFile.get(number - 1); //gets the right file name
         for (String s : Arrays.asList("strain#", ".csv")) { //strips away unnecessary info
             numberString = numberString.replace(s, "");

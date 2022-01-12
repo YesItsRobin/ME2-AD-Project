@@ -7,7 +7,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import dataLayer.ReadCompactStrain;
 import dataLayer.ReadStrain;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,12 +18,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
+import models.CompactStrain;
 import models.Influences;
 import models.SimRegression;
 import models.Strain;
@@ -40,7 +44,7 @@ public class TimeLapseScreenController extends BaseController implements Initial
     private AnchorPane TimelapseChart;
 
     @FXML
-    private LineChart<?, ?> timelapseChart;
+    private LineChart<Number,Number> timelapseChart;
 
     @FXML
     private MenuButton strainGroupMenu;
@@ -69,19 +73,22 @@ public class TimeLapseScreenController extends BaseController implements Initial
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Create new line to go on the chart
-        XYChart.Series series = new XYChart.Series();
+        NumberAxis xAxis = new NumberAxis();
+        NumberAxis yAxis = new NumberAxis();
+
+        XYChart.Series<Number,Number> series = new XYChart.Series<>();
         series.setName("Strain - Group 1");
 
-
         try {
-            ArrayList<Strain> strains = ReadStrain.getStrains(1,1);
+            ArrayList<CompactStrain> strains = ReadCompactStrain.getStrains(1,1);
             SimRegression reg= new SimRegression(strains, Influences.age);
             for (int i=0;i<strains.toArray().length;i++) {
-                series.getData().add(i,reg.getY(i));
+                series.getData().add(new XYChart.Data<>(i, reg.getY(i)));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
         // Add series to LineChart
         timelapseChart.getData().add(series);
