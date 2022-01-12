@@ -40,6 +40,8 @@ public class TimeLapseScreenController extends BaseController implements Initial
     public MenuItem group6;
     public MenuItem group7;
     public MenuItem group8;
+    public NumberAxis xAxis;
+    public NumberAxis yAxis;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -52,7 +54,7 @@ public class TimeLapseScreenController extends BaseController implements Initial
     private AnchorPane TimelapseChart;
 
     @FXML
-    private LineChart timelapseChart;
+    private LineChart<Number,Number> timelapseChart;
 
     @FXML
     private MenuButton strainGroupMenu;
@@ -81,26 +83,29 @@ public class TimeLapseScreenController extends BaseController implements Initial
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Create new line to go on the chart
-                NumberAxis xAxis = new NumberAxis();
-                NumberAxis yAxis = new NumberAxis();
+        int maxAge=600;
+        xAxis.setAutoRanging(false);
+        xAxis.setLowerBound(0);
+        xAxis.setUpperBound(maxAge);
 
-                XYChart.Series<String, Double> series = new XYChart.Series<>();
-                series.setName("Strain - Group 1");
+        yAxis.setAutoRanging(false);
+        yAxis.setLowerBound(-300);
+        yAxis.setUpperBound(100);
+        timelapseChart.setTitle("Chart");
 
-            try {
-                ArrayList<CompactStrain> strains = ReadCompactStrain.getStrains(1, 1);
-                SimRegression reg = new SimRegression(strains, Influences.age);
-                for (int i = 0; i < strains.toArray().length; i++) {
-                    series.getData().add(new XYChart.Data<>(String.valueOf(i), reg.getY(i)));
-                }
-            } catch (IOException ignored) {
+        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+        series.setName("Strain - Group 1");
+
+        try {
+            ArrayList<CompactStrain> strains = ReadCompactStrain.getStrains(1, 1);
+            SimRegression reg = new SimRegression(strains, Influences.age);
+            for (int i = 0; i < maxAge; i++) {
+                series.getData().add(new XYChart.Data<>(i, reg.getY(i)));
             }
+        } catch (IOException ignored) {
+        }
 
-
-            // Add series to LineChart
-            timelapseChart = new LineChart(xAxis,yAxis);
-            timelapseChart.getData().add(series);
-
+        timelapseChart.getData().add(series);
 
     }
 

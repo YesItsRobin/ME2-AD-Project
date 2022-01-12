@@ -28,10 +28,10 @@
     </MenuButton>
     <LineChart fx:id="timelapseChart" layoutX="150.0" layoutY="176.0">
         <xAxis>
-            <CategoryAxis side="BOTTOM"/>
+            <NumberAxis side="BOTTOM" fx:id="xAxis"/>
         </xAxis>
         <yAxis>
-            <NumberAxis side="LEFT"/>
+            <NumberAxis side="LEFT" fx:id="yAxis" />
         </yAxis>
     </LineChart>
     <Button fx:id="homeButton" layoutX="663.0" layoutY="38.0" mnemonicParsing="false" onAction="#Home" text="Homepage"/>
