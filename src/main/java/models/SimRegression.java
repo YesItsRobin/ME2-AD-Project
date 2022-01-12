@@ -13,7 +13,6 @@ public class SimRegression {
     public SimRegression(ArrayList<Strain> strainList, Influences inf){
         this.inf = inf;
         this.strainList = strainList;
-
         Build();
     }
 
@@ -22,11 +21,12 @@ public class SimRegression {
             if (getInf()==Influences.age) {
                 getReg().addData(strain.getWaarde(), strain.getAge());
             }
-
         }
     }
 
-
+    public Double getY(double x){
+        return getReg().predict(x);
+    }
 
     public ArrayList<Strain> getStrainList() {
         return strainList;

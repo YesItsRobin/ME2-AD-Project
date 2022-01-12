@@ -4,7 +4,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import dataLayer.ReadStrain;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +22,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
+import models.Influences;
+import models.SimRegression;
+import models.Strain;
+import org.apache.commons.math3.stat.regression.SimpleRegression;
 
 public class TimeLapseScreenController extends BaseController implements Initializable{
     private Stage stage;
@@ -65,21 +72,17 @@ public class TimeLapseScreenController extends BaseController implements Initial
         XYChart.Series series = new XYChart.Series();
         series.setName("Strain - Group 1");
 
-        // Create a matrix with data points
-        Object[][] strain = new Object[4][2];
-        strain[0][0] = "Jan 1";
-        strain[0][1] = 244;
-        strain[1][0] = "Jan 2";
-        strain[1][1] = 214;
-        strain[2][0] = "Jan 3";
-        strain[2][1] = 240;
-        strain[3][0] = "Jan 4";
-        strain[3][1] = 230;
 
-        // Add data points to make line
-        for(int i=0; i<strain.length; i++) {
-            series.getData().add(new XYChart.Data(strain[i][0], strain[i][1]));
+        try {
+            ArrayList<Strain> strains = ReadStrain.getStrains(1,1);
+            SimRegression reg= new SimRegression(strains, Influences.age);
+            for (int i=0;i<strains.toArray().length;i++) {
+                series.getData().add(i,reg.getY(i));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
         // Add series to LineChart
         timelapseChart.getData().add(series);
     }
