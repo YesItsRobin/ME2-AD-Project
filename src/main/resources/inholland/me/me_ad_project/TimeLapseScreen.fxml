@@ -16,14 +16,14 @@
     <MenuButton fx:id="strainGroupMenu" layoutX="84.0" layoutY="38.0" mnemonicParsing="false"
                 text="Choose Strain Group">
         <items>
-            <MenuItem fx:id="group1" mnemonicParsing="false" onAction="#activate" text="Group 1"/>
-            <MenuItem fx:id="group2" mnemonicParsing="false" onAction="#Factor" text="Group 2"/>
-            <MenuItem fx:id="group3" mnemonicParsing="false" onAction="#Factor" text="Group 3"/>
-            <MenuItem fx:id="group4" mnemonicParsing="false" onAction="#Factor" text="Group 4"/>
-            <MenuItem fx:id="group5" mnemonicParsing="false" onAction="#Factor" text="Group 5"/>
-            <MenuItem fx:id="group6" mnemonicParsing="false" onAction="#Factor" text="Group 6"/>
-            <MenuItem fx:id="group7" mnemonicParsing="false" onAction="#Factor" text="Group 7"/>
-            <MenuItem fx:id="group8" mnemonicParsing="false" onAction="#Factor" text="Group 8"/>
+            <MenuItem fx:id="group1" mnemonicParsing="false" onAction="#group1" text="Group 1"/>
+            <MenuItem fx:id="group2" mnemonicParsing="false" onAction="#group2" text="Group 2"/>
+            <MenuItem fx:id="group3" mnemonicParsing="false" onAction="#group3" text="Group 3"/>
+            <MenuItem fx:id="group4" mnemonicParsing="false" onAction="#group4" text="Group 4"/>
+            <MenuItem fx:id="group5" mnemonicParsing="false" onAction="#group5" text="Group 5"/>
+            <MenuItem fx:id="group6" mnemonicParsing="false" onAction="#group6" text="Group 6"/>
+            <MenuItem fx:id="group7" mnemonicParsing="false" onAction="#group7" text="Group 7"/>
+            <MenuItem fx:id="group8" mnemonicParsing="false" onAction="#group8" text="Group 8"/>
         </items>
     </MenuButton>
     <LineChart fx:id="timelapseChart" layoutX="150.0" layoutY="176.0">

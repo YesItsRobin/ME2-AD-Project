@@ -46,6 +46,7 @@ public class TimeLapseScreenController extends BaseController implements Initial
     private Scene scene;
     private Parent root;
     private Stage dialogStage;
+    public int group;
 
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
@@ -63,15 +64,7 @@ public class TimeLapseScreenController extends BaseController implements Initial
     private void activate(ActionEvent event) {
     }
 
-    public void Factor(ActionEvent actionEvent) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(dialogStage);
-        alert.setTitle("Not available");
-        alert.setHeaderText("Only strain group 1 available");
-        alert.setContentText(" ");
 
-        alert.showAndWait();
-    }
 
     @FXML
     private Button homeButton;
@@ -109,6 +102,45 @@ public class TimeLapseScreenController extends BaseController implements Initial
 
     }
 
+    public int getGroup() {
+        return group;
+    }
+
+    public void setGroup(int group) {
+        this.group = group;
+    }
+
+    public void group1(ActionEvent actionEvent) {
+        setGroup(1);
+    }
+
+    public void group2(ActionEvent actionEvent) {
+        setGroup(2);
+    }
+
+    public void group3(ActionEvent actionEvent) {
+        setGroup(3);
+    }
+    public void group4(ActionEvent actionEvent) {
+        setGroup(4);
+    }
+
+    public void group5(ActionEvent actionEvent) {
+        setGroup(5);
+    }
+
+    public void group6(ActionEvent actionEvent) {
+        setGroup(6);
+    }
+
+    public void group7(ActionEvent actionEvent) {
+        setGroup(7);
+    }
+
+    public void group8(ActionEvent actionEvent) {
+        setGroup(8);
+    }
 
 }
+
 
