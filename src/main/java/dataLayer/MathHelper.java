@@ -4,7 +4,7 @@ package dataLayer;
 
 import models.Strain;
 import org.apache.commons.math3.stat.correlation.SpearmansCorrelation;
-
+import org.apache.commons.math3.stat.regression.SimpleRegression;
 import java.util.ArrayList;
 
 public abstract class MathHelper {
@@ -21,6 +21,16 @@ public abstract class MathHelper {
             }
 
         SpearmansCorrelation corr = new SpearmansCorrelation();
+
         return corr.correlation(xArray,yArray);
+
+    }
+    public static void PredictData(ArrayList<Strain> strainsList){
+        SimpleRegression reg = new SimpleRegression();
+
+        for(Strain strain : strainsList){
+            reg.addData(strain.getWaarde(),strain.getAge());
+            
+        }
     }
 }

@@ -20,7 +20,7 @@ public class Strain {
     public Strain(){}
 
     //Overloaded constructor
-    public Strain(LocalDateTime dateTime, String sensorName, int waarde, String unit, Brugdeel brugdeel, float kopAfstand, String element) {
+    public Strain(LocalDateTime dateTime, String sensorName, float waarde, String unit, Brugdeel brugdeel, float kopAfstand, String element) {
         this.dateTime = dateTime;
         this.sensorName = sensorName;
         this.waarde = waarde;
