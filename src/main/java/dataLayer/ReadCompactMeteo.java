@@ -11,8 +11,13 @@ import static dataLayer.BaseReader.readCSV;
 
 public class ReadCompactMeteo {
 
-    public static ArrayList<CompactMeteo> getMeteo() throws IOException {
-        ArrayList<String> data = readCSV("SensordataBridgeProjectApplicationDevelopment\\meteo\\meteoCompact.csv");       //Calls the BaseReader, gets an ugly ArrayList back
+    public static ArrayList<CompactMeteo> getMeteo() {
+        ArrayList<String> data = null;       //Calls the BaseReader, gets an ugly ArrayList back
+        try {
+            data = readCSV("SensordataBridgeProjectApplicationDevelopment\\meteo\\meteoCompact.csv");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         ArrayList<CompactMeteo> meteoData = new ArrayList<>();    //Creates an empty arraylist of Strains
         data.remove(0);
         for (String row : data) {
@@ -28,7 +33,6 @@ public class ReadCompactMeteo {
 
         //initializes the attributes and do the needed parses and replacements
 
-        System.out.println(dataSplit.get(0).replace("T00:00", ""));
         LocalDate date = LocalDate.parse(dataSplit.get(0).replace("T00:00", ""));
         float temp = Float.parseFloat(dataSplit.get(1));
         float windsnelheid = Float.parseFloat(dataSplit.get(2));
