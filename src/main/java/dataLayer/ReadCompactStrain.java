@@ -19,6 +19,14 @@ public class ReadCompactStrain extends BaseReader {
         }
         return strains;
     }
+    public static ArrayList<CompactStrain> getCompactedStrainsGroup(int group) throws IOException {
+        ArrayList<String> data = readCSV("SensordataBridgeProjectApplicationDevelopment\\StrainGroupCompact\\StrainGroup" + group + ".csv");
+        ArrayList<CompactStrain> strains = new ArrayList<>();    //Creates an empty arraylist of Strains
+        for (String row : data) {
+            strains.add(buildStrain(row));
+        }
+        return strains;
+    }
 
     public static ArrayList<CompactStrain> getStrainsGroup(int group) throws IOException {
         int numOfGroups = List.of(new File("SensordataBridgeProjectApplicationDevelopment\\strain-group" + group + "Compact").list()).size();

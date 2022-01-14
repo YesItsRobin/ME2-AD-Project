@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -10,48 +9,44 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-            prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.TimeLapseScreenController">
-    <MenuButton fx:id="strainGroupMenu" layoutX="84.0" layoutY="38.0" mnemonicParsing="false"
-                text="Choose Strain Group">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TimeLapseScreenController">
+    <MenuButton fx:id="strainGroupMenu" layoutX="84.0" layoutY="38.0" mnemonicParsing="false" text="Choose Strain Group">
         <items>
-            <MenuItem fx:id="group1" mnemonicParsing="false" onAction="#group1" text="Group 1"/>
-            <MenuItem fx:id="group2" mnemonicParsing="false" onAction="#group2" text="Group 2"/>
-            <MenuItem fx:id="group3" mnemonicParsing="false" onAction="#group3" text="Group 3"/>
-            <MenuItem fx:id="group4" mnemonicParsing="false" onAction="#group4" text="Group 4"/>
-            <MenuItem fx:id="group5" mnemonicParsing="false" onAction="#group5" text="Group 5"/>
-            <MenuItem fx:id="group6" mnemonicParsing="false" onAction="#group6" text="Group 6"/>
-            <MenuItem fx:id="group7" mnemonicParsing="false" onAction="#group7" text="Group 7"/>
-            <MenuItem fx:id="group8" mnemonicParsing="false" onAction="#group8" text="Group 8"/>
+            <MenuItem fx:id="group1" mnemonicParsing="false" onAction="#group1" text="Group 1" />
+            <MenuItem fx:id="group2" mnemonicParsing="false" onAction="#group2" text="Group 2" />
+            <MenuItem fx:id="group3" mnemonicParsing="false" onAction="#group3" text="Group 3" />
+            <MenuItem fx:id="group4" mnemonicParsing="false" onAction="#group4" text="Group 4" />
+            <MenuItem fx:id="group5" mnemonicParsing="false" onAction="#group5" text="Group 5" />
+            <MenuItem fx:id="group6" mnemonicParsing="false" onAction="#group6" text="Group 6" />
+            <MenuItem fx:id="group7" mnemonicParsing="false" onAction="#group7" text="Group 7" />
+            <MenuItem fx:id="group8" mnemonicParsing="false" onAction="#group8" text="Group 8" />
         </items>
     </MenuButton>
-    <LineChart fx:id="timelapseChart" layoutX="150.0" layoutY="176.0">
+    <LineChart fx:id="timelapseChart" layoutX="15.0" layoutY="176.0" prefHeight="400.0" prefWidth="754.0">
         <xAxis>
-            <NumberAxis side="BOTTOM" fx:id="xAxis"/>
+            <NumberAxis side="BOTTOM" fx:id="xAxis" />
         </xAxis>
         <yAxis>
-            <NumberAxis side="LEFT" fx:id="yAxis" />
+            <NumberAxis fx:id="yAxis" side="LEFT" />
         </yAxis>
     </LineChart>
-    <Button fx:id="homeButton" layoutX="663.0" layoutY="38.0" mnemonicParsing="false" onAction="#Home" text="Homepage"/>
-    <MenuButton fx:id="factorMenu" layoutX="290.0" layoutY="38.0" mnemonicParsing="false" onAction="#Factor"
-                text="Factor">
+    <Button fx:id="homeButton" layoutX="663.0" layoutY="38.0" mnemonicParsing="false" onAction="#Home" text="Homepage" />
+    <MenuButton fx:id="factorMenu" layoutX="290.0" layoutY="38.0" mnemonicParsing="false" text="Factor">
         <items>
-            <MenuItem mnemonicParsing="false" text="Rainfall"/>
-            <MenuItem mnemonicParsing="false" text="Wind speed"/>
-            <MenuItem mnemonicParsing="false" text="Temperature"/>
-            <MenuItem mnemonicParsing="false" text="None"/>
+            <MenuItem mnemonicParsing="false" text="Rainfall" />
+            <MenuItem mnemonicParsing="false" text="Wind speed" />
+            <MenuItem mnemonicParsing="false" text="Temperature" />
+            <MenuItem mnemonicParsing="false" text="None" />
         </items>
     </MenuButton>
-    <DatePicker layoutX="84.0" layoutY="86.0"/>
-    <DatePicker layoutX="84.0" layoutY="130.0"/>
-    <Label layoutX="25.0" layoutY="87.0" text="From"/>
-    <Label layoutX="34.0" layoutY="138.0" text="To"/>
+    <DatePicker layoutX="84.0" layoutY="86.0" />
+    <DatePicker layoutX="84.0" layoutY="130.0" />
+    <Label layoutX="25.0" layoutY="87.0" text="From" />
+    <Label layoutX="34.0" layoutY="138.0" text="To" />
     <MenuButton layoutX="446.0" layoutY="38.0" mnemonicParsing="false" text="Option">
         <items>
-            <MenuItem mnemonicParsing="false" text="Average"/>
-            <MenuItem mnemonicParsing="false" text="Maximum"/>
+            <MenuItem mnemonicParsing="false" text="Average" />
+            <MenuItem mnemonicParsing="false" text="Maximum" />
         </items>
     </MenuButton>
 </AnchorPane>
