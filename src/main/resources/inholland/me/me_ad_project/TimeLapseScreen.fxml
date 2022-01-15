@@ -18,7 +18,6 @@
             <NumberAxis fx:id="yAxis" side="LEFT" />
         </yAxis>
     </LineChart>
-    <Button fx:id="homeButton" layoutX="859.0" layoutY="10.0" mnemonicParsing="false" onAction="#Home" text="Homepage">
       <font>
          <Font name="System Bold" size="12.0" />
       </font></Button>
@@ -57,4 +56,6 @@
    </Label>
    <Button fx:id="SelectAll" layoutX="81.0" layoutY="146.0" mnemonicParsing="false" onAction="#selectAll" text="Select All" />
    <Button fx:id="ClearAll" layoutX="191.0" layoutY="146.0" mnemonicParsing="false" onAction="#clearAll" text="Clear All" />
+    <Button fx:id="homeButton" layoutX="663.0" layoutY="38.0" mnemonicParsing="false" onAction="#Home" text="Home" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+   <Button layoutX="734.0" layoutY="564.0" mnemonicParsing="false" onAction="#closeStage" text="quit" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
 </AnchorPane>

@@ -39,6 +39,8 @@ public class TimeLapseScreenController extends BaseController {
     @FXML private Button homeButton;
     private int maxAge=5000;
 
+    public NumberAxis xAxis;
+    public NumberAxis yAxis;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -68,6 +70,12 @@ public class TimeLapseScreenController extends BaseController {
         group8.setSelected(false);
     }
 
+    @FXML
+    private Button homeButton;
+
+    @FXML
+    private MenuButton factorMenu;
+
     public void initialize(ActionEvent actionEvent){
         xAxis.setAutoRanging(false);
         xAxis.setLowerBound(0);
@@ -82,7 +90,7 @@ public class TimeLapseScreenController extends BaseController {
     public void showGraph(int group) {
         // Create new line to go on the chart
         XYChart.Series<Number, Number> series = new XYChart.Series<>();
-        series.setName(toString(group));
+        series.setName(getName());
 
         try {
             ArrayList<CompactStrain> strain = ReadCompactStrain.getCompactedStrainsGroup(group);
@@ -93,10 +101,55 @@ public class TimeLapseScreenController extends BaseController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        timelapseChart.getData().add(series);
 
+    }
+
+    public void updateSeries(){
+        int maxAge=600;
+        xAxis.setAutoRanging(false);
+        xAxis.setLowerBound(0);
+        xAxis.setUpperBound(maxAge);
+
+        yAxis.setAutoRanging(false);
+        yAxis.setLowerBound(-300);
+        yAxis.setUpperBound(100);
+        timelapseChart.setTitle("Chart");
+
+        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+        series.setName(getName());
+
+        try {
+            ArrayList<CompactStrain> strains = ReadCompactStrain.getStrains(1, 1);
+            SimRegression reg = new SimRegression(strains, Influences.age);
+            for (int i = 0; i < maxAge; i++) {
+                series.getData().add(new XYChart.Data<>(i, reg.getY(i)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         timelapseChart.getData().add(series);
         }
 
+    private String getName(){
+        StringBuilder str = new StringBuilder();
+        if (isWind()){
+            str.append("wind ");
+        }
+        if (isRain()){
+            str.append("rain ");
+        }
+        if (isTemp()){
+            str.append("temperature ");
+        }
+        if (getGroup()==999) {
+            str.append("All groups.");
+        }
+        else{
+            str.append(getGroup());
+        }
+        return str.toString();
+    }
 
     private String toString(int group) {
         return Integer.toString(group);
