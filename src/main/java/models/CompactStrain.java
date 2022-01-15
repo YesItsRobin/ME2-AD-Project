@@ -57,6 +57,10 @@ public class CompactStrain {
         this.max = max;
     }
 
+    public CompactMeteo getMeteo() {
+        return meteo;
+    }
+
     @Override
     public String toString() {
         return "CompactStrain{" +

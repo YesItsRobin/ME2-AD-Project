@@ -13,35 +13,18 @@ public class MulRegression {
     double[] y= new double[getStrainList().size()];
     double[][] x = new double[getStrainList().size()][getStrainList().size()];
 
-    public MulRegression(ArrayList<CompactStrain> strainList, Influences inf1, Influences inf2, Influences inf3){
+    public MulRegression(ArrayList<CompactStrain> strainList, Boolean wind, Boolean temp, Boolean rain){
         this.strainList = strainList;
         addInf(Influences.age,0);
-        addInf(inf1, 1);
-        addInf(inf2, 2);
-        addInf(inf3, 3);
-    }
-
-    public MulRegression(ArrayList<CompactStrain> strainList, Influences inf1, Influences inf2){
-        this.strainList = strainList;
-        int i=0;
-        for(CompactStrain strain : getStrainList()){
-            getY()[i]=strain.getAge();
-            i++;
+        if (wind){
+            addInf(Influences.windSpeed,1);
         }
-        addInf(Influences.age,0);
-        addInf(inf1, 1);
-        addInf(inf2, 2);
-    }
-
-    public MulRegression(ArrayList<CompactStrain> strainList, Influences inf1){
-        this.strainList = strainList;
-        int i=0;
-        for(CompactStrain strain : getStrainList()){
-            getY()[i]=strain.getAge();
-            i++;
+        if (temp){
+            addInf(Influences.windSpeed,2);
         }
-        addInf(Influences.age,0);
-        addInf(inf1, 1);
+        if (rain){
+            addInf(Influences.windSpeed,3);
+        }
     }
 
     private void addInf(Influences inf, int index){
@@ -58,12 +41,12 @@ public class MulRegression {
                 x[index][i] = strain.getMeteo().getWindsnelheid();
             }
             else if (inf ==Influences.age){
-                getY()[i]=strain.getAge();
+                getYList()[i]=strain.getAge();
             }
             i++;
             }
 
-        reg.newSampleData(getY(),getX());
+        reg.newSampleData(getYList(),getXList());
     }
 
 
@@ -76,11 +59,15 @@ public class MulRegression {
         return reg;
     }
 
-    public double[] getY() {
+    public double[] getYList() {
         return y;
     }
 
-    public double[][] getX() {
+    public double[][] getXList() {
         return x;
+    }
+
+    public double getY(int x){
+        reg.
     }
 }

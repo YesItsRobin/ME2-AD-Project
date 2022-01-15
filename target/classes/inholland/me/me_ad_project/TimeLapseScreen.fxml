@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TimeLapseScreenController">
-    <LineChart fx:id="timelapseChart" layoutX="40.0" layoutY="177.0" prefHeight="532.0" prefWidth="865.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="95.0">
+    <LineChart fx:id="timelapseChart" layoutX="40.0" layoutY="177.0" prefHeight="532.0" prefWidth="865.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="177.0">
         <xAxis>
             <NumberAxis side="BOTTOM" fx:id="xAxis" />
         </xAxis>
@@ -18,45 +18,43 @@
             <NumberAxis fx:id="yAxis" side="LEFT" />
         </yAxis>
     </LineChart>
-    <Button fx:id="homeButton" layoutX="859.0" layoutY="10.0" mnemonicParsing="false" onAction="#Home" text="Homepage">
-      <font>
-         <Font name="System Bold" size="12.0" />
-      </font></Button>
+    <Button layoutX="15.0" layoutY="13.0" mnemonicParsing="false" onAction="#Home" text="Home" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+        <font>
+            <Font name="System Bold" size="12.0" />
+        </font></Button>
     <DatePicker disable="true" layoutX="92.0" layoutY="35.0" />
     <DatePicker disable="true" layoutX="92.0" layoutY="79.0" />
     <Label layoutX="40.0" layoutY="42.0" text="From">
-      <font>
-         <Font name="System Bold" size="12.0" />
-      </font></Label>
+        <font>
+            <Font name="System Bold" size="12.0" />
+        </font></Label>
     <Label layoutX="40.0" layoutY="83.0" prefHeight="18.0" prefWidth="24.0" text="To">
-      <font>
-         <Font name="System Bold" size="12.0" />
-      </font></Label>
+        <font>
+            <Font name="System Bold" size="12.0" />
+        </font></Label>
 
-   <Label  layoutX="508.0" layoutY="17.0" text="Select strain group(s)">
-      <font>
-         <Font name="System Bold" size="12.0" />
-      </font></Label>
-   <CheckBox fx:id="group1" layoutX="412.0" layoutY="41.0" mnemonicParsing="false" text="Group 1" />
-   <CheckBox fx:id="group2" layoutX="495.0" layoutY="42.0" mnemonicParsing="false" text="Group 2" />
-   <CheckBox fx:id="group3" layoutX="584.0" layoutY="42.0" mnemonicParsing="false" text="Group 3" />
-   <CheckBox fx:id="group4" layoutX="663.0" layoutY="42.0" mnemonicParsing="false" text="Group 4" />
-   <CheckBox fx:id="group5" layoutX="412.0" layoutY="75.0" mnemonicParsing="false" text="Group 5" />
-   <CheckBox fx:id="group6" layoutX="495.0" layoutY="75.0" mnemonicParsing="false" text="Group 6" />
-   <CheckBox fx:id="group7" layoutX="584.0" layoutY="75.0" mnemonicParsing="false" text="Group 7" />
-   <CheckBox fx:id="group8" layoutX="663.0" layoutY="75.0" mnemonicParsing="false" text="Group 8" />
-
-   <CheckBox fx:id="rainfall" layoutX="412.0" layoutY="128.0" mnemonicParsing="false" onAction="#rain" text="Rainfall" />
-   <CheckBox fx:id="windspeed" layoutX="622.0" layoutY="128.0" mnemonicParsing="false" onAction="#wind" text="Windspeed" />
-   <CheckBox fx:id="temperature" layoutX="495.0" layoutY="128.0" mnemonicParsing="false" onAction="#temp" text="Temperature" />
-
-   <Label layoutX="547.0" layoutY="103.0" text="Factor">
-      <font>
-         <Font name="System Bold" size="12.0" />
-      </font>
-   </Label>
-   <Button fx:id="SelectAll" layoutX="81.0" layoutY="146.0" mnemonicParsing="false" onAction="#selectAll" text="Select All" />
-   <Button fx:id="ClearAll" layoutX="191.0" layoutY="146.0" mnemonicParsing="false" onAction="#clearAll" text="Clear All" />
-   <Button layoutX="734.0" layoutY="564.0" mnemonicParsing="false" onAction="#closeStage" text="quit" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
-    <Button fx:id="homeButton" layoutX="663.0" layoutY="38.0" mnemonicParsing="false" onAction="#Home" text="Home" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+    <Label layoutX="508.0" layoutY="17.0" text="Select strain group(s)">
+        <font>
+            <Font name="System Bold" size="12.0" />
+        </font></Label>
+    <CheckBox fx:id="group1" layoutX="412.0" layoutY="41.0" mnemonicParsing="false" text="Group 1" AnchorPane.leftAnchor="410.0" AnchorPane.topAnchor="40.0" />
+    <CheckBox fx:id="group2" layoutX="495.0" layoutY="42.0" mnemonicParsing="false" text="Group 2" AnchorPane.leftAnchor="490.0" AnchorPane.topAnchor="40.0" />
+    <CheckBox fx:id="group3" layoutX="584.0" layoutY="42.0" mnemonicParsing="false" text="Group 3" AnchorPane.leftAnchor="570.0" AnchorPane.topAnchor="40.0" />
+    <CheckBox fx:id="group4" layoutX="663.0" layoutY="42.0" mnemonicParsing="false" text="Group 4" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="40.0" />
+    <CheckBox fx:id="group5" layoutX="412.0" layoutY="75.0" mnemonicParsing="false" text="Group 5" AnchorPane.leftAnchor="410.0" AnchorPane.topAnchor="75.0" />
+    <CheckBox fx:id="group6" layoutX="495.0" layoutY="75.0" mnemonicParsing="false" text="Group 6" AnchorPane.leftAnchor="490.0" AnchorPane.topAnchor="75.0" />
+    <CheckBox fx:id="group7" layoutX="584.0" layoutY="75.0" mnemonicParsing="false" text="Group 7" AnchorPane.leftAnchor="570.0" AnchorPane.topAnchor="75.0" />
+    <CheckBox fx:id="group8" layoutX="663.0" layoutY="75.0" mnemonicParsing="false" text="Group 8" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="75.0" />
+    <CheckBox fx:id="rainfall" layoutX="412.0" layoutY="128.0" mnemonicParsing="false" onAction="#rain" text="Rainfall" AnchorPane.leftAnchor="412.0" AnchorPane.topAnchor="130.0" />
+    <CheckBox fx:id="windspeed" layoutX="597.0" layoutY="128.0" mnemonicParsing="false" onAction="#wind" text="Windspeed" />
+    <CheckBox fx:id="temperature" layoutX="502.0" layoutY="128.0" mnemonicParsing="false" onAction="#temp" text="Temperature" />
+    <Label layoutX="547.0" layoutY="103.0" text="Factor" AnchorPane.leftAnchor="547.0" AnchorPane.topAnchor="103.0">
+        <font>
+            <Font name="System Bold" size="12.0" />
+        </font>
+    </Label>
+    <Button fx:id="SelectAll" layoutX="321.0" layoutY="36.0" mnemonicParsing="false" onAction="#selectAll" text="Select All" AnchorPane.leftAnchor="321.0" AnchorPane.topAnchor="36.0" />
+    <Button fx:id="ClearAll" layoutX="323.0" layoutY="70.0" mnemonicParsing="false" onAction="#clearAll" prefHeight="26.0" prefWidth="65.0" text="Clear All" AnchorPane.leftAnchor="321.0" AnchorPane.topAnchor="70.0" />
+   <Button layoutX="905.0" layoutY="661.0" mnemonicParsing="false" onAction="#closeStage" text="Quit" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+   <CheckBox layoutX="730.0" layoutY="40.0" mnemonicParsing="false" text="All groups" AnchorPane.leftAnchor="730.0" AnchorPane.topAnchor="40.0" />
 </AnchorPane>
