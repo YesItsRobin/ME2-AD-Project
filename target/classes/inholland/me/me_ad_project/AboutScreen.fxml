@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AboutScreenController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AboutScreenController">
     <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Home" prefHeight="26.0" prefWidth="62.0" text="Home" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
    <Text layoutX="142.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TODO:  MAKE AN ABOUT SCREEN HERE" wrappingWidth="281.88360595703125" />
    <Button layoutX="545.0" layoutY="360.0" mnemonicParsing="false" onAction="#closeStage" text="Quit" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />

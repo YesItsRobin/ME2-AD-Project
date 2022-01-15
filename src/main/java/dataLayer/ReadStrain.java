@@ -12,6 +12,7 @@ import java.util.List;
 
 public class ReadStrain extends BaseReader {
 
+
     //getStrains returns a pretty Arraylist of Strains of a given group and number
     public static ArrayList<Strain> getStrains(int group, int number) throws IOException {
         StrainFile file = new StrainFile(group, number);        //Uses the StrainFile class to get access to that group and number's csv
@@ -23,7 +24,7 @@ public class ReadStrain extends BaseReader {
             if (tempStrain.getWaarde() < 0 || tempStrain.getWaarde() >= 0)
                 strains.add(tempStrain);  //Adds the row as a Strain after checking if waarde has a number as a value check the buildStrain method
         }
-        return strains;
+        return  strains;
     }
 
     //Turns an ugly String row into a usable Strain

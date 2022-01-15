@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="600.0" minWidth="900.0" prefHeight="605.0" prefWidth="910.0" snapToPixel="false" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeScreenController">
+<AnchorPane minHeight="800.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" snapToPixel="false" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeScreenController">
     <Button layoutX="175.0" layoutY="260.0" mnemonicParsing="false" onAction="#statScreen" prefHeight="26.0" prefWidth="94.0" text="Statistics" AnchorPane.leftAnchor="175.0" AnchorPane.topAnchor="260.0" />
     <Button layoutX="631.0" layoutY="260.0" mnemonicParsing="false" onAction="#TimeLapse" prefHeight="26.0" prefWidth="94.0" text="TimeLapse" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="260.0" />
     <Button layoutX="175.0" layoutY="494.0" mnemonicParsing="false" onAction="#Bridge" prefHeight="26.0" prefWidth="94.0" text="Bridge" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="175.0" />
