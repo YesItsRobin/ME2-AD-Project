@@ -37,6 +37,7 @@ public class TimeLapseScreenController extends BaseController {
     @FXML private LineChart<Number, Number> timelapseChart;
     @FXML private MenuButton strainGroupMenu;
     @FXML private Button homeButton;
+    private int maxAge=5000;
 
     private Stage stage;
     private Scene scene;
@@ -44,105 +45,30 @@ public class TimeLapseScreenController extends BaseController {
     private Stage dialogStage;
 
 
-    public void group1(ActionEvent actionEvent) {
-        showGraph(1);
-        if(!group1.isSelected()){
-            clearGraph();
-        }
-    }
-
-    public void group2(ActionEvent actionEvent) {
-        showGraph(2);
-        if (!group2.isSelected()) {
-            clearGraph();
-        }
-    }
-
-    public void group3(ActionEvent actionEvent) {
-        showGraph(3);
-        if (!group3.isSelected()) {
-            clearGraph();
-        }
-    }
-
-    public void group4(ActionEvent actionEvent) {
-        showGraph(4);
-        if (!group4.isSelected()) {
-            clearGraph();
-        }
-    }
-
-    public void group5(ActionEvent actionEvent) {
-        showGraph(5);
-        if (!group5.isSelected()) {
-            clearGraph();
-        }
-    }
-    public void group6(ActionEvent actionEvent) {
-        showGraph(6);
-        if (!group6.isSelected()) {
-            clearGraph();
-        }
-    }
-
-    public void group7(ActionEvent actionEvent) {
-        showGraph(7);
-        if (!group7.isSelected()) {
-            clearGraph();
-        }
-    }
-
-    public void group8(ActionEvent actionEvent) {
-        showGraph(8);
-        if (!group8.isSelected()) {
-            clearGraph();
-        }
-    }
-
     public void selectAll(ActionEvent actionEvent){
-        if (!group1.isSelected()) {
-            showGraph(1);
-            group1.setSelected(true);
-            }
-        if (!group2.isSelected()) {
-            showGraph(2);
-            group2.setSelected(true);
-            }
-        if (!group3.isSelected()) {
-            showGraph(3);
-            group3.setSelected(true);
-        }
-        if (!group4.isSelected()) {
-            showGraph(4);
-            group4.setSelected(true);
-        }
-        if (!group5.isSelected()) {
-            showGraph(5);
-            group5.setSelected(true);
-        }
-        if (!group6.isSelected()) {
-            showGraph(6);
-            group6.setSelected(true);
-        }
-        if (!group7.isSelected()) {
-            showGraph(7);
-            group7.setSelected(true);
-        }
-        if (!group8.isSelected()) {
-            showGraph(8);
-            group8.setSelected(true);
-        }
-
+        group1.setSelected(true);
+        group2.setSelected(true);
+        group3.setSelected(true);
+        group4.setSelected(true);
+        group5.setSelected(true);
+        group6.setSelected(true);
+        group7.setSelected(true);
+        group8.setSelected(true);
     }
 
 
     public void clearAll(ActionEvent actionEvent){
-        clearGraph();
+        group1.setSelected(false);
+        group2.setSelected(false);
+        group3.setSelected(false);
+        group4.setSelected(false);
+        group5.setSelected(false);
+        group6.setSelected(false);
+        group7.setSelected(false);
+        group8.setSelected(false);
     }
 
-    public void showGraph(int group) {
-        // Create new line to go on the chart
-        int maxAge = 600;
+    public void initialize(ActionEvent actionEvent){
         xAxis.setAutoRanging(false);
         xAxis.setLowerBound(0);
         xAxis.setUpperBound(maxAge);
@@ -151,7 +77,10 @@ public class TimeLapseScreenController extends BaseController {
         yAxis.setLowerBound(-750);
         yAxis.setUpperBound(1000);
         timelapseChart.setTitle("Strain group");
+    }
 
+    public void showGraph(int group) {
+        // Create new line to go on the chart
         XYChart.Series<Number, Number> series = new XYChart.Series<>();
         series.setName(toString(group));
 
@@ -173,17 +102,15 @@ public class TimeLapseScreenController extends BaseController {
         return Integer.toString(group);
     }
 
-    public void clearGraph() {
-            timelapseChart.getData().clear();
-            group1.setSelected(false);
-            group2.setSelected(false);
-            group3.setSelected(false);
-            group4.setSelected(false);
-            group5.setSelected(false);
-            group6.setSelected(false);
-            group7.setSelected(false);
-            group8.setSelected(false);
-        }
+    public void rain(ActionEvent actionEvent) {
+
+    }
+
+    public void wind(ActionEvent actionEvent) {
+    }
+
+    public void temp(ActionEvent actionEvent) {
+    }
 }
 
 
