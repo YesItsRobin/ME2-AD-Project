@@ -31,7 +31,7 @@ public abstract class BaseReader {
         return row;
     }
 
-    public static BufferedReader getBufferedReader(int group, int number, int index) throws IOException{
+    public static BufferedReader getBufferedReader(int group, int number, int index) throws IOException {
         StrainFile testStrain = new StrainFile(group, number);
         BufferedReader csvReader = new BufferedReader(new FileReader(testStrain.getPath()));
         String row;

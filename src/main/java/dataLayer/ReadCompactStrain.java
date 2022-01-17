@@ -1,15 +1,14 @@
 package dataLayer;
 
-import models.Brugdeel;
 import models.CompactStrain;
-import models.Strain;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadCompactStrain extends BaseReader{
+public class ReadCompactStrain extends BaseReader {
     //getStrains returns a pretty Arraylist of Strains of a given group and number
     public static ArrayList<CompactStrain> getStrains(int group, int number) throws IOException {
         StrainFile file = new StrainFile(group, number, true);        //Uses the StrainFile class to get access to that group and number's csv
@@ -19,6 +18,25 @@ public class ReadCompactStrain extends BaseReader{
             strains.add(buildStrain(row));
         }
         return strains;
+    }
+    public static ArrayList<CompactStrain> getCompactedStrainsGroup(int group) throws IOException {
+        ArrayList<String> data = readCSV("SensordataBridgeProjectApplicationDevelopment\\StrainGroupCompact\\StrainGroup" + group + ".csv");
+        ArrayList<CompactStrain> strains = new ArrayList<>();    //Creates an empty arraylist of Strains
+        for (String row : data) {
+            strains.add(buildStrain(row));
+        }
+        return strains;
+    }
+
+    public static ArrayList<CompactStrain> getStrainsGroup(int group) throws IOException {
+        int numOfGroups = List.of(new File("SensordataBridgeProjectApplicationDevelopment\\strain-group" + group + "Compact").list()).size();
+        ArrayList<CompactStrain> strainsGroup = new ArrayList<>();
+        for (int i = 0; i < numOfGroups; i++) {
+            for (CompactStrain strain : getStrains(group, i + 1)) {
+                strainsGroup.add(strain);
+            }
+        }
+        return strainsGroup;
     }
 
     //Turns an ugly String row into a usable Strain

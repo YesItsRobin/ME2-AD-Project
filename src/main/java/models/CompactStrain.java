@@ -1,9 +1,13 @@
 package models;
 
+import dataLayer.ReadCompactMeteo;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 public class CompactStrain {
+    private final CompactMeteo meteo;
     private LocalDate date;
     private float average;
     private float max;
@@ -14,6 +18,14 @@ public class CompactStrain {
         this.date = date;
         this.average = average;
         this.max = max;
+        this.meteo = findMeteo();
+    }
+
+    private CompactMeteo findMeteo() {
+        for (CompactMeteo meteo : ReadCompactMeteo.getMeteo()) {
+            if (meteo.getDate().isEqual(this.date)) return meteo;
+        }
+        return null;
     }
 
     public int getAge() {
@@ -43,6 +55,10 @@ public class CompactStrain {
 
     public void setMax(float max) {
         this.max = max;
+    }
+
+    public CompactMeteo getMeteo() {
+        return meteo;
     }
 
     @Override
