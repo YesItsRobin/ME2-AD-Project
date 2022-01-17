@@ -7,11 +7,9 @@ import java.util.ArrayList;
 public class SimRegression {
 
     ArrayList<CompactStrain> strainList;
-    Influences inf;
     SimpleRegression reg = new SimpleRegression();
 
-    public SimRegression(ArrayList<CompactStrain> strainList, Influences inf){
-        this.inf = inf;
+    public SimRegression(ArrayList<CompactStrain> strainList){
         this.strainList = strainList;
         Build();
     }
@@ -29,10 +27,6 @@ public class SimRegression {
 
     public ArrayList<CompactStrain> getStrainList() {
         return strainList;
-    }
-
-    public Influences getInf() {
-        return inf;
     }
 
     public SimpleRegression getReg() {
