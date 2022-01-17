@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -75,10 +76,6 @@ public class TimeLapseScreenController extends BaseController {
         allGroups.setSelected(false);
     }
 
-
-    @FXML
-    private MenuButton factorMenu;
-
     @FXML
     public void initialize(ActionEvent actionEvent){
         xAxis.setAutoRanging(false);
@@ -105,27 +102,61 @@ public class TimeLapseScreenController extends BaseController {
             XYChart.Series<Number, Number> series = new XYChart.Series<>();
             series.setName(group);
             try {
-                if (!Objects.equals(group, "allGroups")) {
-                    ArrayList<CompactStrain> strains = ReadCompactStrain.getCompactedStrainsGroup(Integer.parseInt(group));
-
+                    ArrayList<CompactStrain> strains = new ArrayList<CompactStrain>();
                     if (windspeed.isSelected()||rainfall.isSelected()||temperature.isSelected()){
-                        MulRegression reg = new MulRegression(strains,windspeed.isSelected(),temperature.isSelected(),rainfall.isSelected())
-                        for (int j = 0; j < maxAge; j++) {
-                            series.getData().add(new XYChart.Data<Number,Number>(j, reg.getY(j)));
+
+                        if(!Objects.equals(group, "allGroups")) {
+                            strains.addAll(ReadCompactStrain.getCompactedStrainsGroupWMeteo(Integer.parseInt(group)));
+                        }
+                        else{
+                            for (int i=1;i<=8;i++){
+                                strains.addAll(ReadCompactStrain.getCompactedStrainsGroupWMeteo(i));
+                            }
+
+                        }
+
+                        MulRegression reg = new MulRegression(strains,windspeed.isSelected(),temperature.isSelected(),rainfall.isSelected());
+                        for (CompactStrain strain : strains) {
+                            ArrayList<Double> x = new ArrayList<>();
+                            x.add((double) strain.getAge());
+                            if (windspeed.isSelected()){
+                                x.add((double) strain.getMeteo().getWindsnelheid());
+                            }
+                            if (rainfall.isSelected()){
+                                x.add((double) strain.getMeteo().getNeerslag());
+                            }
+                            if (temperature.isSelected()){
+                                x.add((double) strain.getMeteo().getTemp());
+                            }
+                            series.getData().add(new XYChart.Data<>(strain.getAge(), reg.getY(x)));
                         }
                     }
                     else{
+                        if(!Objects.equals(group, "allGroups")) {
+                            strains.addAll(ReadCompactStrain.getCompactedStrainsGroup(Integer.parseInt(group)));
+                        }
+                        else{
+                            for (int i=1;i<=8;i++){
+                                strains.addAll(ReadCompactStrain.getCompactedStrainsGroup(i));
+                            }
+
+                        }
                         SimRegression reg = new SimRegression(strains);
-                        for (int j = 0; j < maxAge; j++) {
-                            series.getData().add(new XYChart.Data<Number,Number>(j, reg.getY(j)));
+                        for (int i = 0; i < maxAge; i++) {
+                            series.getData().add(new XYChart.Data<>(i, reg.getY(i)));
                         }
                     }
-
-                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
             timelapseChart.getData().add(series);
+            xAxis.setAutoRanging(false);
+            xAxis.setLowerBound(0);
+            xAxis.setUpperBound(maxAge);
+
+            yAxis.setAutoRanging(false);
+            yAxis.setLowerBound(-750);
+            yAxis.setUpperBound(1000);
         }
 
     }
@@ -162,15 +193,15 @@ public class TimeLapseScreenController extends BaseController {
 
     public void groups(ActionEvent actionEvent) {
         ArrayList<String> Newgroups = new ArrayList<String>();
-        if (group1.isSelected()){groups.add("1");}
-        if (group2.isSelected()){groups.add("2");}
-        if (group3.isSelected()){groups.add("3");}
-        if (group4.isSelected()){groups.add("4");}
-        if (group5.isSelected()){groups.add("5");}
-        if (group6.isSelected()){groups.add("6");}
-        if (group7.isSelected()){groups.add("7");}
-        if (group8.isSelected()){groups.add("8");}
-        if (allGroups.isSelected()){groups.add("allGroups");}
+        if (group1.isSelected()){Newgroups.add("1");}
+        if (group2.isSelected()){Newgroups.add("2");}
+        if (group3.isSelected()){Newgroups.add("3");}
+        if (group4.isSelected()){Newgroups.add("4");}
+        if (group5.isSelected()){Newgroups.add("5");}
+        if (group6.isSelected()){Newgroups.add("6");}
+        if (group7.isSelected()){Newgroups.add("7");}
+        if (group8.isSelected()){Newgroups.add("8");}
+        if (allGroups.isSelected()){Newgroups.add("allGroups");}
         setGroups(Newgroups);
     }
 

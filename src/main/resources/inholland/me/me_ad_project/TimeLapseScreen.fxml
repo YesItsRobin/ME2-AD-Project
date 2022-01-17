@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TimeLapseScreenController">
-    <LineChart fx:id="timelapseChart" layoutX="40.0" layoutY="177.0" prefHeight="532.0" prefWidth="865.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="177.0">
+    <LineChart fx:id="timelapseChart" layoutX="40.0" layoutY="177.0" prefHeight="532.0" prefWidth="865.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="177.0">
         <xAxis>
             <NumberAxis side="BOTTOM" fx:id="xAxis" />
         </xAxis>

@@ -10,27 +10,39 @@ import org.apache.commons.math3.stat.regression.SimpleRegression;
 public class MulRegression {
     ArrayList<CompactStrain> strainList;
     OLSMultipleLinearRegression reg= new OLSMultipleLinearRegression();
-    double[] y= new double[getStrainList().size()];
-    double[][] x = new double[getStrainList().size()][getStrainList().size()];
+    double[] y;
+    double[][] x;
+    double[] beta;
 
     public MulRegression(ArrayList<CompactStrain> strainList, Boolean wind, Boolean temp, Boolean rain){
         this.strainList = strainList;
-        addInf(Influences.age,0);
+        ArrayList<Influences> infs = new ArrayList<>();
+        infs.add(Influences.age);
         if (wind){
-            addInf(Influences.windSpeed,1);
+            infs.add(Influences.windSpeed);
         }
         if (temp){
-            addInf(Influences.windSpeed,2);
+            infs.add(Influences.temp);
         }
         if (rain){
-            addInf(Influences.windSpeed,3);
+            infs.add(Influences.rainfall);
         }
+        y = new double[getStrainList().size()];
+        x = new double[infs.size()][getStrainList().size()];
+
+        int index = 0;
+        for (Influences inf:infs){
+            addInf(inf,index);
+            index++;
+        }
+        addInf(Influences.average,999);
+        reg.newSampleData(getYList(),getXList());
+        this.beta = reg.estimateRegressionParameters();
     }
 
     private void addInf(Influences inf, int index){
         int i =0;
         for(CompactStrain strain : getStrainList()){
-            x[0][i]=strain.getAverage();
             if (inf ==Influences.rainfall) {
                 x[index][i] = strain.getMeteo().getNeerslag();
             }
@@ -40,13 +52,14 @@ public class MulRegression {
             else if (inf ==Influences.windSpeed){
                 x[index][i] = strain.getMeteo().getWindsnelheid();
             }
-            else if (inf ==Influences.age){
-                getYList()[i]=strain.getAge();
+            else if (inf ==Influences.average){
+                getYList()[i]=strain.getAverage();
+            }
+            else if (inf == Influences.age){
+                x[index][i]=strain.getAge();
             }
             i++;
             }
-
-        reg.newSampleData(getYList(),getXList());
     }
 
 
@@ -67,7 +80,16 @@ public class MulRegression {
         return x;
     }
 
-    public double getY(int x){
-        reg.
+    public double[] getBeta() {
+        return beta;
+    }
+
+    public double getY(ArrayList<Double> x){
+        double y = 0;
+        y+=beta[0];
+        for (int i=1;i<getBeta().length;i++){
+            y+=getBeta()[i]* x.get(i);
+        }
+        return y;
     }
 }
