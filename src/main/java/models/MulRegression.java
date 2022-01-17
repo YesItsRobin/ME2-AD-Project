@@ -36,7 +36,7 @@ public class MulRegression {
             index++;
         }
         addInf(Influences.average,999);
-        reg.newSampleData(getYList(),getXList());
+        reg.    newSampleData(getYList(),getXList());
         this.beta = reg.estimateRegressionParameters();
     }
 

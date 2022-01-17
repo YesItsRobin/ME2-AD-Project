@@ -43,7 +43,6 @@ public class TimeLapseScreenController extends BaseController {
     @FXML private MenuButton strainGroupMenu;
     @FXML private Button homeButton;
     private int maxAge=5000;
-    private ArrayList<String> groups;
 
     private Stage stage;
     private Scene scene;
@@ -76,17 +75,20 @@ public class TimeLapseScreenController extends BaseController {
         allGroups.setSelected(false);
     }
 
-    @FXML
-    public void initialize(ActionEvent actionEvent){
-        xAxis.setAutoRanging(false);
-        xAxis.setLowerBound(0);
-        xAxis.setUpperBound(maxAge);
-
-        yAxis.setAutoRanging(false);
-        yAxis.setLowerBound(-750);
-        yAxis.setUpperBound(1000);
-        timelapseChart.setTitle("Strain group");
+    public ArrayList<String> getGroups() {
+        ArrayList<String> groups = new ArrayList<String>();
+        if (group1.isSelected()){groups.add("1");}
+        if (group2.isSelected()){groups.add("2");}
+        if (group3.isSelected()){groups.add("3");}
+        if (group4.isSelected()){groups.add("4");}
+        if (group5.isSelected()){groups.add("5");}
+        if (group6.isSelected()){groups.add("6");}
+        if (group7.isSelected()){groups.add("7");}
+        if (group8.isSelected()){groups.add("8");}
+        if (allGroups.isSelected()){groups.add("allGroups");}
+        return groups;
     }
+
 
     public void draw() {
         try{
@@ -159,58 +161,6 @@ public class TimeLapseScreenController extends BaseController {
             yAxis.setUpperBound(1000);
         }
 
-    }
-
-
-
-    private String getName(){
-        StringBuilder str = new StringBuilder();
-        if (windspeed.isSelected()){
-            str.append("wind ");
-        }
-        if (rainfall.isSelected()){
-            str.append("rain ");
-        }
-        if (temperature.isSelected()){
-            str.append("temperature ");
-        }
-        return str.toString();
-    }
-
-    private String toString(int group) {
-        return Integer.toString(group);
-    }
-
-    public void rain(ActionEvent actionEvent) {
-
-    }
-
-    public void wind(ActionEvent actionEvent) {
-    }
-
-    public void temp(ActionEvent actionEvent) {
-    }
-
-    public void groups(ActionEvent actionEvent) {
-        ArrayList<String> Newgroups = new ArrayList<String>();
-        if (group1.isSelected()){Newgroups.add("1");}
-        if (group2.isSelected()){Newgroups.add("2");}
-        if (group3.isSelected()){Newgroups.add("3");}
-        if (group4.isSelected()){Newgroups.add("4");}
-        if (group5.isSelected()){Newgroups.add("5");}
-        if (group6.isSelected()){Newgroups.add("6");}
-        if (group7.isSelected()){Newgroups.add("7");}
-        if (group8.isSelected()){Newgroups.add("8");}
-        if (allGroups.isSelected()){Newgroups.add("allGroups");}
-        setGroups(Newgroups);
-    }
-
-    public ArrayList<String> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(ArrayList<String> groups) {
-        this.groups = groups;
     }
 }
 
