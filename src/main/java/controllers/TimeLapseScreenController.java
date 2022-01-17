@@ -30,7 +30,6 @@ public class TimeLapseScreenController extends BaseController {
     @FXML public CheckBox group6;
     @FXML public CheckBox group7;
     @FXML public CheckBox group8;
-    @FXML public CheckBox rainfall;
     @FXML public CheckBox temperature;
     @FXML public CheckBox windspeed;
     @FXML public Button SelectAll;
@@ -90,7 +89,7 @@ public class TimeLapseScreenController extends BaseController {
     }
 
 
-    public void draw() {
+    public void draw() throws IOException {
         try{
             timelapseChart.getData().clear();
         }
@@ -103,54 +102,54 @@ public class TimeLapseScreenController extends BaseController {
             // Create new line to go on the chart
             XYChart.Series<Number, Number> series = new XYChart.Series<>();
             series.setName(group);
-            try {
-                    ArrayList<CompactStrain> strains = new ArrayList<CompactStrain>();
-                    if (windspeed.isSelected()||rainfall.isSelected()||temperature.isSelected()){
+            ArrayList<CompactStrain> strains = new ArrayList<>();
 
-                        if(!Objects.equals(group, "allGroups")) {
-                            strains.addAll(ReadCompactStrain.getCompactedStrainsGroupWMeteo(Integer.parseInt(group)));
-                        }
-                        else{
-                            for (int i=1;i<=8;i++){
-                                strains.addAll(ReadCompactStrain.getCompactedStrainsGroupWMeteo(i));
-                            }
-
-                        }
-
-                        MulRegression reg = new MulRegression(strains,windspeed.isSelected(),temperature.isSelected(),rainfall.isSelected());
-                        for (CompactStrain strain : strains) {
-                            ArrayList<Double> x = new ArrayList<>();
-                            x.add((double) strain.getAge());
-                            if (windspeed.isSelected()){
-                                x.add((double) strain.getMeteo().getWindsnelheid());
-                            }
-                            if (rainfall.isSelected()){
-                                x.add((double) strain.getMeteo().getNeerslag());
-                            }
-                            if (temperature.isSelected()){
-                                x.add((double) strain.getMeteo().getTemp());
-                            }
-                            series.getData().add(new XYChart.Data<>(strain.getAge(), reg.getY(x)));
-                        }
-                    }
-                    else{
-                        if(!Objects.equals(group, "allGroups")) {
-                            strains.addAll(ReadCompactStrain.getCompactedStrainsGroup(Integer.parseInt(group)));
-                        }
-                        else{
-                            for (int i=1;i<=8;i++){
-                                strains.addAll(ReadCompactStrain.getCompactedStrainsGroup(i));
-                            }
-
-                        }
-                        SimRegression reg = new SimRegression(strains);
-                        for (int i = 0; i < maxAge; i++) {
-                            series.getData().add(new XYChart.Data<>(i, reg.getY(i)));
-                        }
-                    }
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (!Objects.equals(group, "allGroups")) {
+                strains.addAll(ReadCompactStrain.getCompactedStrainsGroupWMeteo(Integer.parseInt(group)));
+            } else {
+                for (int i = 1; i <= 8; i++) {
+                    strains.addAll(ReadCompactStrain.getCompactedStrainsGroup(i));
+                }
             }
+            SimRegression ageReg = new SimRegression(strains, Influences.age);
+
+            if (windspeed.isSelected() || temperature.isSelected()) {
+
+                if (!Objects.equals(group, "allGroups")) {
+                    strains.addAll(ReadCompactStrain.getCompactedStrainsGroupWMeteo(Integer.parseInt(group)));
+                } else {
+                    for (int i = 1; i <= 8; i++) {
+                        strains.addAll(ReadCompactStrain.getCompactedStrainsGroupWMeteo(i));
+                    }
+
+                }
+
+                MulRegression reg = new MulRegression(strains, windspeed.isSelected(), temperature.isSelected());
+
+                SimRegression windReg = new SimRegression(strains, Influences.windSpeed);
+                SimRegression tempReg = new SimRegression(strains, Influences.temp);
+
+                for (int i = 1; i <= maxAge; i++) {
+                    ArrayList<Double> x = new ArrayList<>();
+
+                    x.add(ageReg.getY(i));
+
+                    if (windspeed.isSelected()) {
+                        x.add(windReg.getY(i));
+                    }
+                    if (temperature.isSelected()) {
+                        x.add(tempReg.getY(i));
+                    }
+
+                    series.getData().add(new XYChart.Data<>(ageReg.getY(i), reg.getY(x)));
+                }
+            } else {
+                for (int i = 0; i < maxAge; i++) {
+                    series.getData().add(new XYChart.Data<>(i, ageReg.getY(i)));
+                }
+            }
+
+
             timelapseChart.getData().add(series);
             xAxis.setAutoRanging(false);
             xAxis.setLowerBound(0);

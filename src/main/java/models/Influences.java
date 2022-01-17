@@ -1,4 +1,4 @@
 package models;
 
-public enum Influences { age, rainfall, temp, windSpeed, average
+public enum Influences { age, temp, windSpeed, average
 }
