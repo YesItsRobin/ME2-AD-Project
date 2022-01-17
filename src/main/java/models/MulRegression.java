@@ -28,7 +28,7 @@ public class MulRegression {
             infs.add(Influences.rainfall);
         }
         y = new double[getStrainList().size()];
-        x = new double[infs.size()][getStrainList().size()];
+        x = new double[getStrainList().size()][infs.size()];
 
         int index = 0;
         for (Influences inf:infs){
@@ -44,19 +44,19 @@ public class MulRegression {
         int i =0;
         for(CompactStrain strain : getStrainList()){
             if (inf ==Influences.rainfall) {
-                x[index][i] = strain.getMeteo().getNeerslag();
+                x[i][index] = strain.getMeteo().getNeerslag();
             }
             else if (inf ==Influences.temp){
-                x[index][i] = strain.getMeteo().getTemp();
+                x[i][index] = strain.getMeteo().getTemp();
             }
             else if (inf ==Influences.windSpeed){
-                x[index][i] = strain.getMeteo().getWindsnelheid();
+                x[i][index] = strain.getMeteo().getWindsnelheid();
             }
             else if (inf ==Influences.average){
                 getYList()[i]=strain.getAverage();
             }
             else if (inf == Influences.age){
-                x[index][i]=strain.getAge();
+                x[i][index]=strain.getAge();
             }
             i++;
             }
