@@ -23,7 +23,9 @@ public class CompactStrain {
 
     private CompactMeteo findMeteo() {
         for (CompactMeteo meteo : ReadCompactMeteo.getMeteo()) {
-            if (meteo.getDate().isEqual(this.date)) return meteo;
+            if (meteo.getDate().isEqual(this.date)){
+                return meteo;
+            }
         }
         return null;
     }
