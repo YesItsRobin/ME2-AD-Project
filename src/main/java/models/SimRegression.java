@@ -22,10 +22,10 @@ public class SimRegression {
                 getReg().addData(strain.getAge(), strain.getAverage());
             }
             else if (getInf()==Influences.windSpeed){
-                getReg().addData(strain.getMeteo().getWindsnelheid(), strain.getAverage());
+                getReg().addData(strain.getAge(),strain.getMeteo().getWindsnelheid());
             }
             else if (getInf()==Influences.temp){
-                getReg().addData(strain.getMeteo().getTemp(), strain.getAverage());
+                getReg().addData(strain.getAge(),strain.getMeteo().getTemp());
             }
         }
 

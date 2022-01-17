@@ -139,9 +139,10 @@ public class TimeLapseScreenController extends BaseController {
                     }
                     if (temperature.isSelected()) {
                         x.add(tempReg.getY(i));
+                        System.out.println(tempReg.getY(i));
                     }
 
-                    series.getData().add(new XYChart.Data<>(ageReg.getY(i), reg.getY(x)));
+                    series.getData().add(new XYChart.Data<>(i, reg.getY(x)));
                 }
             } else {
                 for (int i = 0; i < maxAge; i++) {
@@ -156,7 +157,7 @@ public class TimeLapseScreenController extends BaseController {
             xAxis.setUpperBound(maxAge);
 
             yAxis.setAutoRanging(false);
-            yAxis.setLowerBound(-750);
+            yAxis.setLowerBound(-1000);
             yAxis.setUpperBound(1000);
         }
 
