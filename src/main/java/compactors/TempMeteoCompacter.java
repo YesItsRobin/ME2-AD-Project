@@ -22,7 +22,8 @@ public class TempMeteoCompacter {
         LocalDateTime beginDate = meteos.get(0).getDateTime(); //gets date from first datapoint
         LocalDateTime currentDate = beginDate.withHour(0).withMinute(0).withSecond(0); //uses start of beginDate
 
-        float counter = 0;
+        //initializes all variables
+        float counter = 0; //to keep track of the amount of data summed up
         float sumTemp = 0;
         float sumWindsnelheid = 0;
         float sumWindrichting = 0;
@@ -30,13 +31,7 @@ public class TempMeteoCompacter {
         float sumLuchtdruk = 0;
         float sumNeerslag = 0;
         float sumZonneschijn = 0;
-//        float maxTemp = 0;
-//        float maxWindsnelheid = 0;
-//        float maxWindrichting = 0;
-//        float maxLuchvochtigheid = 0;
-//        float maxLuchtdruk = 0;
-//        float maxNeerslag = 0;
-//        float maxZonneschijn = 0;
+
         for (Meteo meteo : meteos) {
             if (meteo.getDateTime().isBefore(currentDate.plusDays(1))) { //checks if the strain is still current date
 
@@ -50,7 +45,7 @@ public class TempMeteoCompacter {
                 counter++;
 
             } else { // if not current date
-                // fills in a new datapoint of one day with ("date","average","max")
+                // fills in a new datapoint of one day with ("dateTime", "temp", "windsnelheid", "windrichting", "luchvochtigheid", "luchtdruk", "neerslag", "zonneschijn")
                 data.add(new String[]{String.valueOf(currentDate), String.valueOf(sumTemp / counter), String.valueOf(sumWindrichting / counter), String.valueOf(sumWindsnelheid / counter), String.valueOf(sumLuchvochtigheid / counter), String.valueOf(sumLuchtdruk / counter), String.valueOf(sumNeerslag / counter), String.valueOf(sumZonneschijn / counter)});
                 currentDate = currentDate.plusDays(1); //goes to the next day
                 //begin next day

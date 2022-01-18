@@ -14,7 +14,7 @@ public class Strain {
     private String element; //all attributes given in the .csv files
     int age;
 
-    private final LocalDate beginDate = LocalDate.of(2019,11,27);
+    private final LocalDate beginDate = LocalDate.of(2019,11,27);  //begindate of the data
 
     //Empty constructor
     public Strain(){}

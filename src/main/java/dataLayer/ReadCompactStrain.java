@@ -19,7 +19,7 @@ public class ReadCompactStrain extends BaseReader {
         }
         return strains;
     }
-    public static ArrayList<CompactStrain> getCompactedStrainsGroup(int group) throws IOException {
+    public static ArrayList<CompactStrain> getCompactedStrainsGroup(int group) throws IOException { //get compactedgroup strains
         ArrayList<String> data = readCSV("SensordataBridgeProjectApplicationDevelopment\\StrainGroupCompact\\StrainGroup" + group + ".csv");
         ArrayList<CompactStrain> strains = new ArrayList<>();    //Creates an empty arraylist of Strains
         for (String row : data) {
@@ -32,14 +32,14 @@ public class ReadCompactStrain extends BaseReader {
         ArrayList<String> data = readCSV("SensordataBridgeProjectApplicationDevelopment\\StrainGroupCompact\\StrainGroup" + group + ".csv");
         ArrayList<CompactStrain> strains = new ArrayList<>();    //Creates an empty arraylist of Strains
         for (String row : data) {
-            if(buildStrain(row).getMeteo()!=null) {
+            if(buildStrain(row).getMeteo()!=null) { //checks if the strain has a meteo datapoint on the same day
                 strains.add(buildStrain(row));
             }
         }
         return strains;
     }
 
-    public static ArrayList<CompactStrain> getStrainsGroup(int group) throws IOException {
+    public static ArrayList<CompactStrain> getStrainsGroup(int group) throws IOException { //get all strains form a group
         int numOfGroups = List.of(new File("SensordataBridgeProjectApplicationDevelopment\\strain-group" + group + "Compact").list()).size();
         ArrayList<CompactStrain> strainsGroup = new ArrayList<>();
         for (int i = 0; i < numOfGroups; i++) {

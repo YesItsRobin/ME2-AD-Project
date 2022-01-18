@@ -13,16 +13,16 @@ import java.util.Comparator;
 import java.util.List;
 
 public class TempStrainGroup {
-    public static void compactCSVFiles() throws IOException {
-        for (int i = 0; i < 8; i++) {
+    //do not run again!!!
+    public static void compactCSVFiles() throws IOException { //compacts all groups, so each group has one csv file
+        for (int i = 0; i < 8; i++) { //iterates over all compacted groups
             ArrayList<CompactStrain> strains = ReadCompactStrain.getStrainsGroup(i + 1);
-            strains.sort(new Comparator<CompactStrain>() {
+            strains.sort(new Comparator<CompactStrain>() { //orders all strains by date, so it is quicker to run over the whole list
                 @Override
                 public int compare(CompactStrain strain1, CompactStrain strain2) {
                     return strain1.getDate().compareTo(strain2.getDate());
                 }
             });
-
 
             List<String[]> data = new ArrayList<>();
 
