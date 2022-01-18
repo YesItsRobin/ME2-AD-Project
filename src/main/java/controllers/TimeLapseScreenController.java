@@ -37,6 +37,7 @@ public class TimeLapseScreenController extends BaseController {
     @FXML public NumberAxis xAxis;
     @FXML public NumberAxis yAxis;
     public CheckBox allGroups;
+    public Slider climateSlider;
     @FXML private AnchorPane TimelapseChart;
     @FXML private LineChart<Number, Number> timelapseChart;
     @FXML private MenuButton strainGroupMenu;
@@ -109,6 +110,7 @@ public class TimeLapseScreenController extends BaseController {
             } else {
                 for (int i = 1; i <= 8; i++) {
                     strains.addAll(ReadCompactStrain.getCompactedStrainsGroup(i));
+                    System.out.println(strains.size());
                 }
             }
             SimRegression ageReg = new SimRegression(strains, Influences.age);
@@ -136,10 +138,11 @@ public class TimeLapseScreenController extends BaseController {
 
                     if (windspeed.isSelected()) {
                         x.add(windReg.getY(i));
+                        System.out.println(windReg.getY(i));
                     }
                     if (temperature.isSelected()) {
                         x.add(tempReg.getY(i));
-                        System.out.println(tempReg.getY(i));
+
                     }
 
                     series.getData().add(new XYChart.Data<>(i, reg.getY(x)));

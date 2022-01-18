@@ -6,11 +6,13 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TimeLapseScreenController">
-    <LineChart fx:id="timelapseChart" layoutX="40.0" layoutY="177.0" prefHeight="532.0" prefWidth="865.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="177.0">
+    <LineChart fx:id="timelapseChart" layoutX="40.0" layoutY="177.0" prefHeight="518.0" prefWidth="818.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="177.0">
         <xAxis>
             <NumberAxis side="BOTTOM" fx:id="xAxis" />
         </xAxis>
@@ -57,4 +59,6 @@
    <Button layoutX="905.0" layoutY="661.0" mnemonicParsing="false" onAction="#closeStage" text="Quit" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
    <CheckBox fx:id="allGroups" layoutX="730.0" layoutY="40.0" mnemonicParsing="false" text="All groups" AnchorPane.leftAnchor="730.0" AnchorPane.topAnchor="40.0" />
    <Button layoutX="854.0" layoutY="38.0" mnemonicParsing="false" onAction="#draw" prefHeight="100.0" prefWidth="100.0" text="Draw" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0" />
+   <Slider fx:id="climateSlider" layoutX="853.0" layoutY="192.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" orientation="VERTICAL" prefHeight="190.0" prefWidth="50.0" showTickLabels="true" showTickMarks="true" value="3.0" AnchorPane.rightAnchor="94.0" AnchorPane.topAnchor="190.0" />
+   <Text layoutX="822.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Climate change" />
 </AnchorPane>
