@@ -110,12 +110,13 @@ public class TimeLapseScreenController extends BaseController {
             } else {
                 for (int i = 1; i <= 8; i++) {
                     strains.addAll(ReadCompactStrain.getCompactedStrainsGroup(i));
-                    System.out.println(strains.size());
                 }
             }
             SimRegression ageReg = new SimRegression(strains, Influences.age);
-
+            System.out.println(strains.size());
             if (windspeed.isSelected() || temperature.isSelected()) {
+                double climateFactor = climateSlider.getValue();
+                System.out.println(climateFactor);
 
                 if (!Objects.equals(group, "allGroups")) {
                     strains.addAll(ReadCompactStrain.getCompactedStrainsGroupWMeteo(Integer.parseInt(group)));
@@ -128,8 +129,8 @@ public class TimeLapseScreenController extends BaseController {
 
                 MulRegression reg = new MulRegression(strains, windspeed.isSelected(), temperature.isSelected());
 
-                SimRegression windReg = new SimRegression(strains, Influences.windSpeed);
-                SimRegression tempReg = new SimRegression(strains, Influences.temp);
+                SimRegression windReg = new SimRegression(Influences.windSpeed, maxAge,climateFactor);
+                SimRegression tempReg = new SimRegression(Influences.temp, maxAge, climateFactor);
 
                 for (int i = 1; i <= maxAge; i++) {
                     ArrayList<Double> x = new ArrayList<>();
@@ -138,7 +139,6 @@ public class TimeLapseScreenController extends BaseController {
 
                     if (windspeed.isSelected()) {
                         x.add(windReg.getY(i));
-                        System.out.println(windReg.getY(i));
                     }
                     if (temperature.isSelected()) {
                         x.add(tempReg.getY(i));

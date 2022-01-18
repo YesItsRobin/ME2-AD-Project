@@ -53,7 +53,6 @@ public class ReadStrain extends BaseReader {
         List<Strain> strainsDate = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < new File("SensordataBridgeProjectApplicationDevelopment\\strain-group" + (i + 1)).list().length; j++) {
-                System.out.println("SensordataBridgeProjectApplicationDevelopment\\strain-group" + (i + 1) + (j + 1));
                 boolean dataExtracted = false;
                 boolean dataFound = false;
                 int index = findIndex(i + 1, j + 1, begin);
@@ -75,7 +74,6 @@ public class ReadStrain extends BaseReader {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-//                System.out.println(strainsDate);
             }
         }
         return strainsDate;
