@@ -14,12 +14,13 @@ public class ReadCompactMeteo {
     public static ArrayList<CompactMeteo> getMeteo() {
         ArrayList<String> data = null;       //Calls the BaseReader, gets an ugly ArrayList back
         try {
+            //reads whole file
             data = readCSV("SensordataBridgeProjectApplicationDevelopment\\meteo\\meteoCompact.csv");
         } catch (IOException e) {
             e.printStackTrace();
         }
         ArrayList<CompactMeteo> meteoData = new ArrayList<>();    //Creates an empty arraylist of Strains
-        data.remove(0);
+        data.remove(0); //removes first line with variable names
         for (String row : data) {
             meteoData.add(buildMeteoData(row));
         }

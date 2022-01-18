@@ -14,10 +14,10 @@ public class ReadMeteo {
     public static ArrayList<Meteo> getMeteo() throws IOException {
         ArrayList<String> data = readCSV("SensordataBridgeProjectApplicationDevelopment\\meteo\\meteo.csv");       //Calls the BaseReader, gets an ugly ArrayList back
         ArrayList<Meteo> meteoData = new ArrayList<>();    //Creates an empty arraylist of Strains
-        data.remove(0);
-        data.remove(0);
+        data.remove(0); //removes variable names
+        data.remove(0); // and units
         for (String row : data) {
-            if (!(row.contains(";;"))) {
+            if (!(row.contains(";;"))) { //the rows with ";;" in them have no values, so it skips them
                 meteoData.add(buildMeteoData(row));
             }
         }

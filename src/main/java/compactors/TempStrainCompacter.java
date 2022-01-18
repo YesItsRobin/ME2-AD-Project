@@ -14,7 +14,7 @@ import java.util.List;
 public class TempStrainCompacter {
     //do not run again!!!
     public static void compactCSVFile() throws IOException {
-        for (int i = 7; i < 8; i++) { //iterates over the 8 groups
+        for (int i = 0; i < 8; i++) { //iterates over the 8 groups
             // looks at the number and name of the files in that group
             List<String> groupFile = List.of(new File("SensordataBridgeProjectApplicationDevelopment\\strain-group" + (i + 1)).list());
             for (int j = 0; j < groupFile.size(); j++) {
