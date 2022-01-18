@@ -36,8 +36,11 @@ public class ReadCompactMeteo {
         LocalDate date = LocalDate.parse(dataSplit.get(0).replace("T00:00", ""));
         float temp = Float.parseFloat(dataSplit.get(1));
         float windsnelheid = Float.parseFloat(dataSplit.get(2));
-        float windrichting = Float.parseFloat(dataSplit.get(3));
         float luchvochtigheid = Float.parseFloat(dataSplit.get(4));
+
+        if (dataSplit.get(3).contains("null")) return new CompactMeteo(date, temp, windsnelheid, luchvochtigheid);
+
+        float windrichting = Float.parseFloat(dataSplit.get(3));
         float luchtdruk = Float.parseFloat(dataSplit.get(5));
         float neerslag = Float.parseFloat(dataSplit.get(6));
         float zonneschijn = Float.parseFloat(dataSplit.get(7));
