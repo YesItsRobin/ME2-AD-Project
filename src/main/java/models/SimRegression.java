@@ -15,7 +15,7 @@ public class SimRegression {
         BuildS(strainList);
     }
 
-    public SimRegression(Influences inf, int years,double climate){
+    public SimRegression(Influences inf, int years, int climate){
         this.inf = inf;
         ArrayList<CompactMeteo> data = ReadCompactMeteo.getMeteo();
         BuildM(data);
@@ -43,6 +43,15 @@ public class SimRegression {
             else if (getInf()==Influences.windSpeed){
                 reg.addData(meteo.getAge(),meteo.getWindsnelheid());
             }
+            else if(getInf()==Influences.atmosPres){
+                reg.addData(meteo.getAge(),meteo.getLuchtdruk());
+            }
+            else if(getInf()==Influences.sun){
+                reg.addData(meteo.getAge(),meteo.getZonneschijn());
+            }
+            else if(getInf() == Influences.humidity){
+                reg.addData(meteo.getAge(), meteo.getLuchvochtigheid());
+            }
         }
     }
 
@@ -56,6 +65,15 @@ public class SimRegression {
             }
             else if (getInf()==Influences.temp){
                 getReg().addData(strain.getAge(),strain.getMeteo().getTemp());
+            }
+            else if(getInf()==Influences.atmosPres){
+                getReg().addData(strain.getAge(),strain.getMeteo().getLuchtdruk());
+            }
+            else if(getInf()==Influences.sun){
+                getReg().addData(strain.getAge(),strain.getMeteo().getZonneschijn());
+            }
+            else if(getInf() ==Influences.humidity){
+                getReg().addData(strain.getAge(),strain.getMeteo().getLuchvochtigheid());
             }
         }
 

@@ -12,7 +12,8 @@ public class MulRegression {
     double[][] x;
     double[] beta;
 
-    public MulRegression(ArrayList<CompactStrain> strainList, Boolean wind, Boolean temp, Boolean atmosPres){
+    public MulRegression(ArrayList<CompactStrain> strainList, Boolean wind, Boolean temp, Boolean atmosPres,
+                                                                Boolean sun,  Boolean humidity){
         this.strainList = strainList;
         ArrayList<Influences> infs = new ArrayList<>();
         infs.add(Influences.age);
@@ -24,6 +25,12 @@ public class MulRegression {
         }
         if (atmosPres){
             infs.add(Influences.atmosPres);
+        }
+        if (sun){
+            infs.add(Influences.sun);
+        }
+        if (humidity){
+            infs.add(Influences.humidity);
         }
         y = new double[getStrainList().size()];
         x = new double[getStrainList().size()][infs.size()];
@@ -53,6 +60,12 @@ public class MulRegression {
             else if (inf == Influences.atmosPres){
                 x[i][index] = strain.getMeteo().getLuchtdruk();
             }
+            else if (inf == Influences.sun){
+                x[i][index] = strain.getMeteo().getZonneschijn();
+            }
+            else if (inf == Influences.humidity){
+                x[i][index] = strain.getMeteo().getLuchvochtigheid();
+            }
             else if (inf ==Influences.average){
                 getYList()[i]=strain.getAverage();
             }
@@ -62,8 +75,6 @@ public class MulRegression {
             i++;
             }
     }
-
-
 
     public ArrayList<CompactStrain> getStrainList() {
         return strainList;

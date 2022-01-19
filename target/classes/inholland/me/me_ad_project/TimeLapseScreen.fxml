@@ -4,7 +4,6 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,42 +23,41 @@
         <font>
             <Font name="System Bold" size="12.0" />
         </font></Button>
-    <DatePicker disable="true" layoutX="92.0" layoutY="35.0" />
-    <DatePicker disable="true" layoutX="92.0" layoutY="79.0" />
-    <Label layoutX="40.0" layoutY="42.0" text="From">
-        <font>
-            <Font name="System Bold" size="12.0" />
-        </font></Label>
-    <Label layoutX="40.0" layoutY="83.0" prefHeight="18.0" prefWidth="24.0" text="To">
-        <font>
-            <Font name="System Bold" size="12.0" />
-        </font></Label>
 
-    <Label layoutX="508.0" layoutY="17.0" text="Select strain group(s)">
+    <Label layoutX="408.0" layoutY="18.0" text="Select strain group(s)">
         <font>
             <Font name="System Bold" size="12.0" />
         </font></Label>
-    <CheckBox fx:id="group1" layoutX="412.0" layoutY="41.0" mnemonicParsing="false" text="Group 1" AnchorPane.leftAnchor="410.0" AnchorPane.topAnchor="40.0" />
-    <CheckBox fx:id="group2" layoutX="495.0" layoutY="42.0" mnemonicParsing="false" text="Group 2" AnchorPane.leftAnchor="490.0" AnchorPane.topAnchor="40.0" />
-    <CheckBox fx:id="group3" layoutX="584.0" layoutY="42.0" mnemonicParsing="false" text="Group 3" AnchorPane.leftAnchor="570.0" AnchorPane.topAnchor="40.0" />
-    <CheckBox fx:id="group4" layoutX="663.0" layoutY="42.0" mnemonicParsing="false" text="Group 4" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="40.0" />
-    <CheckBox fx:id="group5" layoutX="412.0" layoutY="75.0" mnemonicParsing="false" text="Group 5" AnchorPane.leftAnchor="410.0" AnchorPane.topAnchor="75.0" />
-    <CheckBox fx:id="group6" layoutX="495.0" layoutY="75.0" mnemonicParsing="false" text="Group 6" AnchorPane.leftAnchor="490.0" AnchorPane.topAnchor="75.0" />
-    <CheckBox fx:id="group7" layoutX="584.0" layoutY="75.0" mnemonicParsing="false" text="Group 7" AnchorPane.leftAnchor="570.0" AnchorPane.topAnchor="75.0" />
-    <CheckBox fx:id="group8" layoutX="663.0" layoutY="75.0" mnemonicParsing="false" text="Group 8" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="75.0" />
-    <CheckBox fx:id="windspeed" layoutX="597.0" layoutY="128.0" mnemonicParsing="false" text="Windspeed" />
-    <CheckBox fx:id="temperature" layoutX="450.0" layoutY="128.0" mnemonicParsing="false" text="Temperature" />
-    <Label layoutX="547.0" layoutY="103.0" text="Factor" AnchorPane.leftAnchor="547.0" AnchorPane.topAnchor="103.0">
+    <CheckBox fx:id="group1" layoutX="310.0" layoutY="41.0" mnemonicParsing="false" text="Group 1" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="41.0" />
+    <CheckBox fx:id="group2" layoutX="390.0" layoutY="41.0" mnemonicParsing="false" text="Group 2" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="41.0" />
+    <CheckBox fx:id="group3" layoutX="470.0" layoutY="41.0" mnemonicParsing="false" text="Group 3" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="41.0" />
+    <CheckBox fx:id="group4" layoutX="550.0" layoutY="41.0" mnemonicParsing="false" text="Group 4" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="41.0" />
+    <CheckBox fx:id="group5" layoutX="310.0" layoutY="76.0" mnemonicParsing="false" text="Group 5" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="76.0" />
+    <CheckBox fx:id="group6" layoutX="390.0" layoutY="76.0" mnemonicParsing="false" text="Group 6" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="76.0" />
+    <CheckBox fx:id="group7" layoutX="470.0" layoutY="76.0" mnemonicParsing="false" text="Group 7" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="76.0" />
+    <CheckBox fx:id="group8" layoutX="550.0" layoutY="76.0" mnemonicParsing="false" text="Group 8" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="76.0" />
+    <CheckBox fx:id="windspeed" layoutX="529.0" layoutY="156.0" mnemonicParsing="false" text="Windspeed" />
+    <CheckBox fx:id="temperature" layoutX="400.0" layoutY="159.0" mnemonicParsing="false" text="Temperature" />
+    <CheckBox fx:id="atmosphericPressure" layoutX="349.0" layoutY="131.0" mnemonicParsing="false" text="Atmospheric pressure" />
+    <CheckBox fx:id="humidity" layoutX="519.0" layoutY="131.0" mnemonicParsing="false" text="Humidity" />
+    <CheckBox fx:id="sunshine" layoutX="298.0" layoutY="159.0" mnemonicParsing="false" text="Sunshine" />
+
+    <Label layoutX="447.0" layoutY="104.0" text="Factor" AnchorPane.leftAnchor="447.0" AnchorPane.topAnchor="104.0">
         <font>
             <Font name="System Bold" size="12.0" />
         </font>
     </Label>
-    <Button fx:id="SelectAll" layoutX="321.0" layoutY="36.0" mnemonicParsing="false" onAction="#selectAll" text="Select All" AnchorPane.leftAnchor="321.0" AnchorPane.topAnchor="36.0" />
-    <Button fx:id="ClearAll" layoutX="323.0" layoutY="70.0" mnemonicParsing="false" onAction="#clearAll" prefHeight="26.0" prefWidth="65.0" text="Clear All" AnchorPane.leftAnchor="321.0" AnchorPane.topAnchor="70.0" />
+    <Button fx:id="SelectAll" layoutX="221.0" layoutY="37.0" mnemonicParsing="false" onAction="#selectAll" text="Select All" AnchorPane.leftAnchor="221.0" AnchorPane.topAnchor="37.0" />
+    <Button fx:id="ClearAll" layoutX="221.0" layoutY="71.0" mnemonicParsing="false" onAction="#clearAll" prefHeight="26.0" prefWidth="65.0" text="Clear All" AnchorPane.leftAnchor="221.0" AnchorPane.topAnchor="71.0" />
     <Button layoutX="905.0" layoutY="661.0" mnemonicParsing="false" onAction="#closeStage" text="Quit" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
-    <CheckBox fx:id="allGroups" layoutX="730.0" layoutY="40.0" mnemonicParsing="false" text="All groups" AnchorPane.leftAnchor="730.0" AnchorPane.topAnchor="40.0" />
+    <CheckBox fx:id="allGroups" layoutX="630.0" layoutY="41.0" mnemonicParsing="false" text="All groups" AnchorPane.leftAnchor="630.0" AnchorPane.topAnchor="41.0" />
     <Button layoutX="854.0" layoutY="38.0" mnemonicParsing="false" onAction="#draw" prefHeight="100.0" prefWidth="100.0" text="Draw" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0" />
-    <Slider fx:id="climateSlider" layoutX="853.0" layoutY="192.0" majorTickUnit="1.0" max="1.0" minorTickCount="0" orientation="VERTICAL" prefHeight="190.0" prefWidth="50.0" showTickLabels="true" showTickMarks="true" value="0.3" AnchorPane.rightAnchor="94.0" AnchorPane.topAnchor="190.0" />
-    <Text layoutX="822.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Climate change (°C)" />
-   <CheckBox fx:id="AtmosphericPressure" layoutX="284.0" layoutY="128.0" mnemonicParsing="false" text="Atmospheric pressure" />
+    <Slider fx:id="climateSlider" blockIncrement="5.0" layoutX="853.0" layoutY="192.0" majorTickUnit="1.0" max="5.0" minorTickCount="0" orientation="VERTICAL" prefHeight="190.0" prefWidth="50.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" AnchorPane.rightAnchor="94.0" AnchorPane.topAnchor="190.0" />
+    <Text layoutX="822.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Climate change (+°C)" />
+
+   <Label layoutX="30.0" layoutY="74.0" text="Data Analysis">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+   </Label>
 </AnchorPane>
