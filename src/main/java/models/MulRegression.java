@@ -2,10 +2,7 @@ package models;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-
 import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
-import org.apache.commons.math3.stat.regression.SimpleRegression;
 
 
 public class MulRegression {
@@ -15,7 +12,7 @@ public class MulRegression {
     double[][] x;
     double[] beta;
 
-    public MulRegression(ArrayList<CompactStrain> strainList, Boolean wind, Boolean temp){
+    public MulRegression(ArrayList<CompactStrain> strainList, Boolean wind, Boolean temp, Boolean atmosPres){
         this.strainList = strainList;
         ArrayList<Influences> infs = new ArrayList<>();
         infs.add(Influences.age);
@@ -24,6 +21,9 @@ public class MulRegression {
         }
         if (temp){
             infs.add(Influences.temp);
+        }
+        if (atmosPres){
+            infs.add(Influences.atmosPres);
         }
         y = new double[getStrainList().size()];
         x = new double[getStrainList().size()][infs.size()];
@@ -49,6 +49,9 @@ public class MulRegression {
             }
             else if (inf ==Influences.windSpeed){
                 x[i][index] = strain.getMeteo().getWindsnelheid();
+            }
+            else if (inf == Influences.atmosPres){
+                x[i][index] = strain.getMeteo().getLuchtdruk();
             }
             else if (inf ==Influences.average){
                 getYList()[i]=strain.getAverage();

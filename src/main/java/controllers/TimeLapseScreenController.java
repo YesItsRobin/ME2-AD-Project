@@ -1,10 +1,8 @@
 package controllers;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Objects;
-
 import dataLayer.ReadCompactStrain;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +12,6 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import models.CompactStrain;
 import models.Influences;
@@ -32,24 +29,24 @@ public class TimeLapseScreenController extends BaseController {
     @FXML public CheckBox group8;
     @FXML public CheckBox temperature;
     @FXML public CheckBox windspeed;
+    @FXML public CheckBox AtmosphericPressure;
     @FXML public Button SelectAll;
     @FXML public Button ClearAll;
     @FXML public NumberAxis xAxis;
     @FXML public NumberAxis yAxis;
     public CheckBox allGroups;
     public Slider climateSlider;
-    @FXML private AnchorPane TimelapseChart;
     @FXML private LineChart<Number, Number> timelapseChart;
-    @FXML private MenuButton strainGroupMenu;
-    @FXML private Button homeButton;
     private int maxAge=5000;
 
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private Stage dialogStage;
 
-
+    /**
+     * This checkbox will check all checkboxes when the button 'select all is clicked'
+     * @param actionEvent
+     */
     public void selectAll(ActionEvent actionEvent){
         group1.setSelected(true);
         group2.setSelected(true);
@@ -62,7 +59,10 @@ public class TimeLapseScreenController extends BaseController {
         allGroups.setSelected(true);
     }
 
-
+    /**
+     * This method is used when the button 'clear all' is clicked, all checkboxes will be empty
+     * @param actionEvent
+     */
     public void clearAll(ActionEvent actionEvent){
         group1.setSelected(false);
         group2.setSelected(false);
@@ -75,6 +75,10 @@ public class TimeLapseScreenController extends BaseController {
         allGroups.setSelected(false);
     }
 
+    /**
+     * This method returns an arraylist of all groups that are selected and thus need to be drawn
+     * @return ArrayList
+     */
     public ArrayList<String> getGroups() {
         ArrayList<String> groups = new ArrayList<String>();
         if (group1.isSelected()){groups.add("1");}
@@ -89,7 +93,11 @@ public class TimeLapseScreenController extends BaseController {
         return groups;
     }
 
-
+    /**
+     * This method is used when the button 'draw' is clicked, it will draw the selected strain group(s),
+     * and takes the chosen weather factor in consideration
+     * @throws IOException
+     */
     public void draw() throws IOException {
         try{
             timelapseChart.getData().clear();
@@ -114,7 +122,7 @@ public class TimeLapseScreenController extends BaseController {
             }
             SimRegression ageReg = new SimRegression(strains, Influences.age);
             System.out.println(strains.size());
-            if (windspeed.isSelected() || temperature.isSelected()) {
+            if (windspeed.isSelected() || temperature.isSelected() || AtmosphericPressure.isSelected()) {
                 double climateFactor = climateSlider.getValue();
                 System.out.println(climateFactor);
 
@@ -127,10 +135,12 @@ public class TimeLapseScreenController extends BaseController {
 
                 }
 
-                MulRegression reg = new MulRegression(strains, windspeed.isSelected(), temperature.isSelected());
+                MulRegression reg = new MulRegression(strains, windspeed.isSelected(), temperature.isSelected(),
+                                                        AtmosphericPressure.isSelected());
 
                 SimRegression windReg = new SimRegression(Influences.windSpeed, maxAge,climateFactor);
                 SimRegression tempReg = new SimRegression(Influences.temp, maxAge, climateFactor);
+                SimRegression atmosPresReg = new SimRegression(Influences.atmosPres, maxAge, climateFactor);
 
                 for (int i = 1; i <= maxAge; i++) {
                     ArrayList<Double> x = new ArrayList<>();
@@ -144,6 +154,9 @@ public class TimeLapseScreenController extends BaseController {
                         x.add(tempReg.getY(i));
 
                     }
+                    if(AtmosphericPressure.isSelected()){
+                        x.add(atmosPresReg.getY(i));
+                    }
 
                     series.getData().add(new XYChart.Data<>(i, reg.getY(x)));
                 }
@@ -154,7 +167,7 @@ public class TimeLapseScreenController extends BaseController {
             }
 
 
-            timelapseChart.getData().add(series);
+            timelapseChart.getData().add(series); // Adds the data of the strain group(s) to the chart
             xAxis.setAutoRanging(false);
             xAxis.setLowerBound(0);
             xAxis.setUpperBound(maxAge);

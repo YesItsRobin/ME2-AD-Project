@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TimeLapseScreenController">
+<AnchorPane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TimeLapseScreenController">
     <LineChart fx:id="timelapseChart" layoutX="40.0" layoutY="177.0" prefHeight="518.0" prefWidth="818.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="177.0">
         <xAxis>
             <NumberAxis side="BOTTOM" fx:id="xAxis" />
@@ -61,4 +61,5 @@
     <Button layoutX="854.0" layoutY="38.0" mnemonicParsing="false" onAction="#draw" prefHeight="100.0" prefWidth="100.0" text="Draw" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0" />
     <Slider fx:id="climateSlider" layoutX="853.0" layoutY="192.0" majorTickUnit="1.0" max="1.0" minorTickCount="0" orientation="VERTICAL" prefHeight="190.0" prefWidth="50.0" showTickLabels="true" showTickMarks="true" value="0.3" AnchorPane.rightAnchor="94.0" AnchorPane.topAnchor="190.0" />
     <Text layoutX="822.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Climate change" />
+   <CheckBox fx:id="AtmosphericPressure" layoutX="284.0" layoutY="128.0" mnemonicParsing="false" text="Atmospheric pressure" />
 </AnchorPane>
