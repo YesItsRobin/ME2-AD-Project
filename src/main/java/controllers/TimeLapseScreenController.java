@@ -189,11 +189,10 @@ public class TimeLapseScreenController extends BaseController implements Initial
                     strains.addAll(ReadCompactStrain.getCompactedStrainsGroup(i));
                 }
             }
-            SimRegression ageReg = new SimRegression(strains, Influences.age);
-            System.out.println(strains.size());
+            SimRegression ageReg = new SimRegression(strains, Influences.age, climate);
             if (windspeed.isSelected() || temperature.isSelected() || atmosphericPressure.isSelected()
                     || sunshine.isSelected() || sunshine.isSelected()) {
-                System.out.println(climate);
+
 
                 if (!Objects.equals(group, "allGroups")) {
                     strains.addAll(ReadCompactStrain.getCompactedStrainsGroupWMeteo(Integer.parseInt(group)));

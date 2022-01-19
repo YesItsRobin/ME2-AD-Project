@@ -9,14 +9,17 @@ public class SimRegression {
 
     private final Influences inf;
     SimpleRegression reg = new SimpleRegression();
+    int climate;
 
-    public SimRegression(ArrayList<CompactStrain> strainList, Influences inf){
+    public SimRegression(ArrayList<CompactStrain> strainList, Influences inf, int climate){
         this.inf = inf;
+        this.climate = climate;
         BuildS(strainList);
     }
 
     public SimRegression(Influences inf, int years, int climate){
         this.inf = inf;
+        this.climate = climate;
         ArrayList<CompactMeteo> data = ReadCompactMeteo.getMeteo();
         BuildM(data);
         double dataOfYesterday = getY(365);
