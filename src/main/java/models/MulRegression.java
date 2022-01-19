@@ -42,10 +42,7 @@ public class MulRegression {
         }
         addInf(Influences.average,999);
         reg.newSampleData(getYList(),getXList());
-        System.out.println(Arrays.toString(getYList()));
-        System.out.println(Arrays.deepToString(getXList()));
         this.beta = reg.estimateRegressionParameters();
-        System.out.println(Arrays.toString(beta));
     }
 
     private void addInf(Influences inf, int index){
