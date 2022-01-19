@@ -2,13 +2,8 @@ package controllers;
 
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import views.AboutScreen;
-import views.BridgeScreen;
-import views.StatisticsScreen;
 import views.TimeLapseScreen;
 
 import java.io.IOException;
@@ -17,13 +12,7 @@ import java.io.IOException;
 public class HomeScreenController extends BaseController {
 
 
-    //These 4 buttons change the view from HomeScreen To another
-
-    public void statScreen(ActionEvent actionEvent) throws IOException {
-        Stage stage = StatisticsScreen.getStatisticsScreen();   //Get the new screen that needs to be shown
-        stage.show();               //Open that new view
-        closeStage(actionEvent);    //Close the old view (HomeScreen)
-    }
+    //These 2 buttons change the view from HomeScreen To another
 
     public void TimeLapse(ActionEvent actionEvent) throws IOException {
 
@@ -32,11 +21,6 @@ public class HomeScreenController extends BaseController {
         closeStage(actionEvent);
     }
 
-    public void Bridge(ActionEvent actionEvent) throws IOException{
-        Stage stage = BridgeScreen.getBridgeScreen();
-        stage.show();
-        closeStage(actionEvent);
-    }
 
     public void About(ActionEvent actionEvent) throws IOException {
         Stage stage = AboutScreen.getAboutScreen();

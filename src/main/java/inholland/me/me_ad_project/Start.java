@@ -14,7 +14,7 @@ public class Start extends Application {
     public void start(Stage stage) throws IOException {
         //The stage is filled
         stage = HomeScreen.getHomeScreen(); //calls the method getHomeScreen of the view Homescreen
-        stage.setTitle("SWECO STATS");      //text in window
+        stage.setTitle("SWECO STATISTICS");      //text in window
         stage.show();                       //Opens up the stage
     }
 }

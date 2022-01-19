@@ -97,7 +97,7 @@ public class TimeLapseScreenController extends BaseController {
         catch(Exception e){
             e.printStackTrace();
         }
-
+ 
         for (String group:getGroups()){
 
             // Create new line to go on the chart
