@@ -9,7 +9,6 @@ import java.io.IOException;
 
 //This is the main class that starts the application. Don't add to this class unless absolutely necessary!!
 public class Start extends Application {
-
     @Override       //Stage stage creates an empty stage, this is an fx thing where you have to open a window.
     public void start(Stage stage) throws IOException {
         //The stage is filled

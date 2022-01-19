@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
@@ -14,7 +15,7 @@ public class MulRegression {
     double[][] x;
     double[] beta;
 
-    public MulRegression(ArrayList<CompactStrain> strainList, Boolean wind, Boolean temp, Boolean rain){
+    public MulRegression(ArrayList<CompactStrain> strainList, Boolean wind, Boolean temp){
         this.strainList = strainList;
         ArrayList<Influences> infs = new ArrayList<>();
         infs.add(Influences.age);
@@ -24,11 +25,8 @@ public class MulRegression {
         if (temp){
             infs.add(Influences.temp);
         }
-        if (rain){
-            infs.add(Influences.rainfall);
-        }
         y = new double[getStrainList().size()];
-        x = new double[infs.size()][getStrainList().size()];
+        x = new double[getStrainList().size()][infs.size()];
 
         int index = 0;
         for (Influences inf:infs){
@@ -36,27 +34,27 @@ public class MulRegression {
             index++;
         }
         addInf(Influences.average,999);
-        reg.    newSampleData(getYList(),getXList());
+        reg.newSampleData(getYList(),getXList());
+        System.out.println(Arrays.toString(getYList()));
+        System.out.println(Arrays.deepToString(getXList()));
         this.beta = reg.estimateRegressionParameters();
+        System.out.println(Arrays.toString(beta));
     }
 
     private void addInf(Influences inf, int index){
         int i =0;
         for(CompactStrain strain : getStrainList()){
-            if (inf ==Influences.rainfall) {
-                x[index][i] = strain.getMeteo().getNeerslag();
-            }
-            else if (inf ==Influences.temp){
-                x[index][i] = strain.getMeteo().getTemp();
+            if (inf ==Influences.temp){
+                x[i][index] = strain.getMeteo().getTemp();
             }
             else if (inf ==Influences.windSpeed){
-                x[index][i] = strain.getMeteo().getWindsnelheid();
+                x[i][index] = strain.getMeteo().getWindsnelheid();
             }
             else if (inf ==Influences.average){
                 getYList()[i]=strain.getAverage();
             }
             else if (inf == Influences.age){
-                x[index][i]=strain.getAge();
+                x[i][index]=strain.getAge();
             }
             i++;
             }
@@ -84,11 +82,12 @@ public class MulRegression {
         return beta;
     }
 
-    public double getY(ArrayList<Double> x){
+    public double getY(ArrayList<Double> xx){
         double y = 0;
-        y+=beta[0];
+        y+=getBeta()[0];
+
         for (int i=1;i<getBeta().length;i++){
-            y+=getBeta()[i]* x.get(i);
+            y+=getBeta()[i]* xx.get(i-1);
         }
         return y;
     }

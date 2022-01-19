@@ -11,7 +11,7 @@ public class CompactStrain {
     private LocalDate date;
     private float average;
     private float max;
-    private final static LocalDate beginDate = LocalDate.of(2019, 11, 27);
+    private final static LocalDate beginDate = LocalDate.of(2019, 11, 27); //begindate of the data
 
 
     public CompactStrain(LocalDate date, float average, float max) {
@@ -21,7 +21,7 @@ public class CompactStrain {
         this.meteo = findMeteo();
     }
 
-    private CompactMeteo findMeteo() {
+    private CompactMeteo findMeteo() { //find corresponding meteo with the same date
         for (CompactMeteo meteo : ReadCompactMeteo.getMeteo()) {
             if (meteo.getDate().isEqual(this.date)){
                 return meteo;
@@ -32,7 +32,7 @@ public class CompactStrain {
 
     public int getAge() {
         // https://stackoverflow.com/questions/20165564/calculating-days-between-two-dates-with-java
-        return (int) ChronoUnit.DAYS.between(beginDate, this.date);
+        return (int) ChronoUnit.DAYS.between(beginDate, this.date); //calculate age when begindate = 0
     }
 
     public LocalDate getDate() {
