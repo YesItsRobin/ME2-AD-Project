@@ -21,21 +21,6 @@ public class StrainFile {
         }
         this.number = Integer.valueOf(numberString); //parses it as an int
 
-        // i think this can be deleted!?
-        //a switch to cover all groups. It's faster than a lot of if statements. Google "switch java" for more info.
-        //the names of the csv's are constructed in a way the number starts at a set point and then increases by one.
-        //Check the data files
-//        this.number= switch (group) {   //changing the number to a strain number. the input is something like 2 or 6 but the names of the csv's are more like 20504
-//            case 1 -> 10105 + number;   //case 1 here means: if(group==1)
-//            case 2 -> 10200 + number;
-//            case 3 -> 10300 + number;
-//            case 4 -> 20400 + number;
-//            case 5 -> 20500 + number;
-//            case 6 -> 20600 + number;
-//            case 7 -> 20703 + number;
-//            case 8 -> 20800 + number;
-//            default -> throw new IllegalStateException("Group does not exist: " + group); //if all fails, the group number doesn't exist
-//        };
         this.group = group;
         this.path = "SensordataBridgeProjectApplicationDevelopment\\strain-group" + this.group;
         if (compact) this.path += "Compact";
